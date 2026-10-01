@@ -2046,7 +2046,7 @@ render();
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyA-3sxZSP4wtn5bZI1BO8yXLHeObO64PXs",
   authDomain: "deign-3ce1c.firebaseapp.com",
-  databaseURL: "deign-3ce1c.firebasestorage.app",
+  databaseURL: "https://deign-3ce1c-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "deign-3ce1c",
   appId: "1:683638153072:web:4283c42149677f206579b5"
 };
