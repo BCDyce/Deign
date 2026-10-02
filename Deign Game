@@ -205,6 +205,11 @@ button.chip:hover { border-color: var(--accent); }
 .unit i { font-style: normal; font-family: var(--font-mono); font-size: max(6px, 1.3cqw); opacity: .9; }
 .unit i .up { text-decoration: underline; } .unit i .dn { text-decoration: line-through; }
 .unit.tint-lili { box-shadow: 0 0 0 2px var(--t-apex); }
+.unit.fog { background: repeating-linear-gradient(135deg, var(--foe) 0 5px, color-mix(in srgb, var(--foe) 70%, #fff) 5px 10px); }
+.cell { overflow: visible; }
+.wall { position: absolute; background: var(--fg); pointer-events: none; z-index: 3; border-radius: 1px; }
+.wall.wR { right: -3px; top: 6%; bottom: 6%; width: 4px; }
+.wall.wD { bottom: -3px; left: 6%; right: 6%; height: 4px; }
 .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--mute); margin-top: 8px; justify-content: center; }
 .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; background: var(--c); }
 
@@ -292,12 +297,27 @@ C('rose','Rose the Ruinous Requiem','apex','Snow',[3,1,1],'rose','Cannot attack.
 C('disObs','The Disaster, Wind, Storm and Flames','apex','Obsidian',[2,3,3],'disObs','When descended, destroy every enemy Acolyte on a straight line (row, column or diagonal) between this and another of your Disaster Acolytes.',['disaster']);
 C('creator','The Unruly Creator','apex','Snow',[1,1,1],'creator','When descended, replace as many enemy Acolytes as possible with Acolytes from your own Elysium (the enemy keeps control of the replacements). Replaced Acolytes go to Elysium.');
 C('abu','Abu, Charming the Corrupted','apex','Snow',[2,2,2],'abu','When descended, hatch all of your Egg Acolytes.');
-C('basilisk','The Egg of the Basilisk','apex','Obsidian',[0,0,0],'egg5','At the end of the 3rd of your turns it hatches and gains +5/+5/+5.',['egg']);
+C('basilisk','The Egg of the Lamia','apex','Obsidian',[0,0,0],'egg5','While on the board, at the end of the 3rd of your turns it hatches and gains 5/5/5 Movement, Attack and Defence.',['egg']);
 C('emiliano','Emiliano, Null Imprint','apex','Obsidian',[3,4,4],'emiliano','While on the board, all Acolytes\' stat changes are reverted to their original Movement, Attack and Defence.');
 C('gogmagog',"Gogmagog, Justice's Mace",'apex','Snow',[3,4,3],'gogmagog','While on the board, all opponent\'s Acolytes lose their effects. Your own Gigantes keep theirs.',['gigante']);
 C('fenrir',"Fenrir, Shadow's Trail of Death",'apex','Obsidian',[0,0,5],'fenrir','When it moves, it may slide in a straight line as far as the Path allows. Passed Acolytes are pushed one square. Pushed off the Path onto unbuilt board means destroyed.');
 C('clarissa','Clarissa, Omniscient Gaze','apex','Obsidian',[4,4,4],'clarissa','While on the board, all unbuilt ground may be moved across by your Acolytes.');
 C('azrael','Azrael, Be Afraid of the Dark','apex','Snow',[0,2,2],'azrael','While on the board, when it would attack, first move it adjacent to any enemy Acolyte anywhere on the board.');
+// ---- Compendium additions: Snow / Obsidian
+C('fallen','The Fallen','apex','Obsidian',[6,6,6],'fallen','At the end of each of your turns, you must destroy one of their descended Acolytes (they may choose The Fallen itself), or The Fallen is destroyed.');
+C('hien','Hien the Fog of War','apex','Snow',[2,2,2],'hien','While on the board, all of your Acolytes are replaced by identical Fog of War tokens (your opponent cannot see which is which), but keep their Stats and Effects.');
+C('theend','The End','apex','Obsidian',[0,0,0],'theend','When descended, if you have descended 9 other Acolytes during the game, you win.');
+C('dfe',"Death's Final Embrace",'apex','Obsidian',[3,4,4],'dfe',"May only be descended when 1st, 2nd and 3rd Death's Embrace are all in your Elysium. While on the board, it has all the While on the Board effects of the Acolytes in your Elysium.");
+C('asura','The Absolute Asura','apex','Snow/Obsidian',[4,10,10],'asura','When descended, your opponent descends every Acolyte they can from their Pool and Elysium onto free squares of their Pathways, and you destroy all your other descended Acolytes.');
+C('breakmend','Break and Mend','apex','Obsidian',[3,1,0],'breakmend','When it attacks a Gold, Silver or Bronze Acolyte, instead of a battle you take control of it and place it next to your Font.');
+C('vangelis','Vangelis The Howling Typhoon','apex','Snow',[4,4,4],'vangelis','While on the board, if Acolytes occupy all 4 corners of the board, you win.');
+C('accretion','The Accretion Asura','apex','Snow',[4,5,3],'accretion','At the end of each of your turns, all Acolytes on its Pathway are moved next to it, then it must attack one adjacent Acolyte (either player\'s).');
+C('talia','Talia the Enchanting Order','apex','Obsidian',[3,3,3],'talia','While on the board, you may move your opponent\'s Acolytes as if they were your own (you may not attack with them).');
+C('mystery','The Great Mystery','apex','Snow',[2,2,3],'mystery','When descended, you may place its Pathway anywhere there is open space, with no need to connect to your own.');
+C('present','The Passing Present','apex','Obsidian',[5,1,1],'present','May attack as many squares away as its current Attack (including across unbuilt ground).');
+C('heaven9','9th Heaven Above','apex','Snow',[2,1,1],'heaven9','While on the board, double the stats of your Font (after other stat changes).');
+C('omen','The Omen of Mutual Destruction','apex','Obsidian',[0,0,0],'omen','When descended, ALL Acolytes on the board get a death timer of 3. After 3 of your turns (including this one), every Acolyte with a death timer is destroyed.');
+C('defaced','Defaced by Sacreligion','apex','Obsidian',[2,0,0],'defaced','While on the board, both Fonts are removed from the board (neither player can lose from a Font being destroyed). When this is destroyed the Fonts return.');
 // ---- Gold
 C('dusan','Dusan the Faraday Cage','gold','Gold',[2,2,2],'dusan','While on the board, if Anina is on the board, enemy Acolytes on this Acolyte\'s Pathway cannot Move or Attack.');
 C('kaoru',"Kaoru, Virtue's Nature",'gold','Gold',[2,2,1],'kaoru','When descended, your descended Acolytes with 1 or less Attack get +1 Attack.');
@@ -314,6 +334,27 @@ C('ariki','Ariki The Roar of the Earth','gold','Gold',[1,1,1],'ariki','When desc
 C('alicia','Alicia the Borderline','gold','Gold',[2,2,2],'alicia','While on the board, all your Acolytes get +0.5 Attack and +0.5 Defence.');
 C('ysbaddaden','Ysbaddaden, the Ancient Chief','gold','Gold',[2,6,5],'dblAtk','When this Acolyte is attacked, double the attacker\'s Attack.',['gigante']);
 C('antoine','Antoine the Tormenting Fantasy','gold','Gold',[2,0,0],'antoine','While on the board, all descended Acolytes get -1/-1 Attack and Defence.');
+// ---- Compendium additions: Gold
+C('deepti','Deepti, Star-Crossed','gold','Gold',[2,3,2],'deepti','While on the board, if Richa is also on the board gain +2 Attack and +3 Defence. When Richa is destroyed, destroy this Acolyte too.');
+C('richa','Richa, Sun-Crossed','gold','Gold',[3,2,3],'richa','While on the board, if Deepti is also on the board gain +3 Attack and +2 Defence. When Deepti is destroyed, destroy this Acolyte too.');
+C('vanessa','Vanessa the Spreading Inferno','gold','Gold',[4,0,0],'vanessa','When destroyed, instead of going to Elysium it returns to the board next to your Font with +1/+1 Attack and Defence. Stacks on each death.');
+C('embrace3',"3rd Death's Embrace",'gold','Gold',[2,2,2],'embrace3',"While on the board, your Death's Embrace Acolytes have +1 Movement.",['embrace']);
+C('liekeR','Lieke, Reckless Abandon','gold','Gold',[3,8,4],'lieke','May only be descended when you have Mylène the Regression and Lieke the Slipping Conscious on the board. When it destroys an Acolyte, it loses 2 Attack and 1 Defence.');
+C('labyrinth','Labyrinth Maker','gold','Gold',[2,2,2],'labyrinth','When descended, build a wall on one side of a board square. Nothing may cross it while this Acolyte is on the board.');
+C('dahlia','Dahlia, Relentless Conquest','gold','Gold',[0,3,3],'dahlia','When it would move, it may slide in a straight line as far as it can without passing through Acolytes or leaving the Path.');
+C('kiran','Kiran, Esoteric Enlightenment','gold','Gold',[2,3,2],'kiran','May attack and move diagonally.');
+C('aisha',"Aisha, Peregrine's Dive",'gold','Gold',[2,3,1],'aisha','May attack in a straight line along any built Pathway, but only the first Acolyte in line.');
+C('meng',"Mèng the Charlatan's Dream",'gold','Gold',[2,2,2],'meng','When descended, choose an Acolyte, set its Attack or Defence to 0 and add that amount to the other.');
+C('clay','The Clay Soldier','gold','Gold',[2,0,0],'clay','When descended, its Attack and Defence become equal to those of one of your opponent\'s Acolytes.');
+C('yiorgos','Yiorgos, The Lion among Mice','gold','Gold',[3,1,0],'yiorgos','Can only be destroyed in battle by an Acolyte with 1 or less Attack.');
+C('chalice','The Poison Chalice of Life','gold','Gold',[1,1,1],'chalice','When descended, you may subtract stats from this Acolyte (down to 0), then subtract the same amount from an opponent\'s Acolyte.');
+C('jasprit','Jasprit, First Response','gold','Gold',[2,3,2],'combo','When it attacks with a partner Combo Attacker (Ishan) on the same Pathway, you may use two Attack results at once and combine their Attack.',['combo']);
+C('cult1','Cult 1','gold','Gold',[2,2,2],'cult1','While on the board, if in a 2x2 square with your Cult 2, Cult 3 and Cult 4, you may sacrifice those 3 to add their stats to this Acolyte.');
+C('sacrilege','The Sacrilegious Offering','gold','Gold',[3,0,0],'sacrilege','When descended, choose 1 to 3. ALL other Acolytes on this Pathway lose that much Attack and Defence.');
+C('naomie',"Naomie the Beast's Stampede",'gold','Gold',[2,0,0],'naomie','While on the board, its Attack and Defence are doubled (after other stat changes).');
+C('whack','Holy Whackamole','gold','Gold',[2,2,2],'whack','When descended, you may swap the positions of your Acolytes in any way you like.');
+C('veveve','Veveve the Last Survivor','gold','Gold',[0,0,0],'veveve','While on the board, at the end of each of your turns it gains 1/1/1 Movement, Attack and Defence.');
+C('anjali',"Anjali, Rebirth's Wheel",'gold','Gold',[2,2,2],'anjali','When descended, remove one of your Acolytes from the board. When Anjali is destroyed, that Acolyte takes her place.');
 // ---- Silver
 C('yui',"Yui, Compassion's Gift",'silver','Silver',[2,1,2],'yui','When descended, your descended Acolytes with 1 or less Defence get +1 Defence.');
 C('caoimhin','Caoimhin The Three as One','silver','Silver',[2,0,0],'caoimhin','While on the board, all Caoimhin gain +1/+1 Attack and Defence. Stacks.');
@@ -330,6 +371,25 @@ C('alexi','Alexi the Invasive Infection','silver','Silver',[1,1,1],'alexi','When
 C('marcos','Marcos, the Spectral Slicer','silver','Silver',[3,2,1],'marcos','While on the board, may move through other Acolytes.');
 C('bastion','The Last Bastion','silver','Silver',[1,2,3],'bastion','While on the board, any Acolyte that moves adjacent to it has its Movement set to 1.');
 C('salem','Salem the Narcotic Trance','silver','Silver',[1,2,1],'salem','While on the board, enemy Acolytes on this Acolyte\'s Pathway get -1/-1 Attack and Defence.');
+// ---- Compendium additions: Silver
+C('tina','Tina the Terminal','silver','Silver',[2,0,0],'tina','While on the board, when adjacent to an Acolyte, may sacrifice herself to destroy it. Both go to their Elysiums.');
+C('bigbear','Big Bear','silver','Silver',[2,3,1],'bigbear','While on the board, if Big Bear Baby is in your Elysium gain +2/+2 Attack and Defence.');
+C('lester',"Lester Necromancy's Breath",'silver','Silver',[3,2,2],'lester','When descended, if there are 10 or more Acolytes in both Elysiums combined, gain +2 Attack and +2 Defence.');
+C('ayaan',"Ayaan, Nature's Legacy",'silver','Silver',[2,2,2],'ayaan','While on the board, your Acolytes on the same Pathway as Ayaan get +2 Attack and +2 Defence.');
+C('embrace2',"2nd Death's Embrace",'silver','Silver',[1,2,1],'embrace2',"While on the board, your Death's Embrace Acolytes have +1 Attack.",['embrace']);
+C('mylene','Mylène the Regression','silver','Silver',[2,2,1],'mylene','When descended, revert a different Acolyte\'s stats to their originals.');
+C('leon',"Leon, Emulation's Flattery",'silver','Silver',[0,0,0],'leon','While on the board, can attack any Acolyte regardless of distance.');
+C('olusegun','Olusegun the Conquest','silver','Silver',[2,2,2],'olusegun','When it destroys another Acolyte, gain +1/+1 Attack and Defence.');
+C('ali','Ali the Walking Weakness','silver','Silver',[2,1,1],'ali','When descended, choose an opponent\'s Acolyte and halve its Attack and Defence.');
+C('alara','Alara, Moon Traveler','silver','Silver',[0,2,3],'alara','While on the board, when one of your Acolytes moves next to Alara, you may move it up to 5 squares to an open Path square (ignoring Acolytes and unbuilt ground).');
+C('ishan','Ishan, Second Reply','silver','Silver',[2,2,3],'combo','When it attacks with a partner Combo Attacker (Jasprit) on the same Pathway, you may use two Attack results at once and combine their Attack.',['combo']);
+C('ivan','Ivan the Matter of Honour','silver','Silver',[2,1,1],'ivan','When descended, choose an opponent\'s Acolyte. It may only attack Ivan while Ivan is on the field.');
+C('maika','Maika, Sacrificial Shelter','silver','Silver',[0,0,0],'maika','While on the board, when another of your Acolytes is attacked, you may swap places with it and Maika is attacked instead.');
+C('huimin','Huimin, Dimension Hopper','silver','Silver',[2,1,1],'huimin','While on the board, if both end squares of her row or column are built Path, she may move between those two squares.');
+C('harry',"Harry the Bog's Bite",'silver','Silver',[1,1,1],'harry','When descended, choose an opponent\'s Acolyte. While Harry is on the board it has Movement 0.');
+C('mata','Mata, Spy in the Ranks','silver','Silver',[1,1,1],'mata','When descended, switch positions with one of your opponent\'s Acolytes.');
+C('talos','Talos, Overclocked and Breaking','silver','Silver',[4,4,4],'talos','While on the board, at the end of the 2nd of your turns, destroy this Acolyte.');
+C('gambler',"The Gambler's Offering",'silver','Silver',[2,2,2],'gambler','While on the board, both players may roll one extra die at the start of the turn.');
 // ---- Bronze
 C('ella','Ella the Zoa of Law','bronze','Bronze',[1,1,1],null,'No effect. Counts as a Zoa for Albie.',['zoa:ella']);
 C('charlotte','Charlotte the Zoa of Rebellion','bronze','Bronze',[1,1,1],null,'No effect. Counts as a Zoa for Albie.',['zoa:charlotte']);
@@ -348,6 +408,23 @@ C('brittan',"Brittan, Turtle's Defence",'bronze','Bronze',[1,1,4],null,'No effec
 C('niamh',"Niamh Lightning's Stride",'bronze','Bronze',[5,1,0],null,'No effect.');
 C('olwyn','Olwyn the Cursed Fourth Finger','bronze','Bronze',[1,4,3],'dblAtk','When attacked, double the attacker\'s Attack.',['gigante']);
 C('gianluca','Gianluca the Incensing Blackguard','bronze','Bronze',[2,1,1],'gianluca','While on the board, ALL Acolytes on this Pathway get -1/-1 Attack and Defence (including itself).');
+
+// ---- Compendium additions: Bronze
+C('bigbearbaby','Big Bear Baby','bronze','Bronze',[1,1,1],null,'No effect.',['bearbaby']);
+C('lisa','Lisa the Unobservant Aggression','bronze','Bronze',[2,2,2],'lisa','When it attacks, gain +2 Attack for the battle. When it defends, lose 2 Defence for the battle.');
+C('embrace1',"1st Death's Embrace",'bronze','Bronze',[1,1,1],'embrace1',"While on the board, your Death's Embrace Acolytes have +1 Defence.",['embrace']);
+C('trex','T-Rex','bronze','Bronze',[1,3,1],null,'No effect.');
+C('guy','Guy The Pusillanimous','bronze','Bronze',[3,1,1],'guy','While on the board, if adjacent to another of your Acolytes, gain +2/+2 Attack and Defence.');
+C('angus','Angus the Zoa of the Senses','bronze','Bronze',[1,1,1],null,'No effect. Counts as a Zoa for Albie.',['zoa:angus']);
+C('lucas','Lucas the Zoa of Inspiration','bronze','Bronze',[1,1,1],null,'No effect. Counts as a Zoa for Albie.',['zoa:lucas']);
+C('cult2','Cult 2','bronze','Bronze',[1,2,2],null,'No effect. Part of the Cult 1 square.',['cult']);
+C('cult3','Cult 3','bronze','Bronze',[1,2,2],null,'No effect. Part of the Cult 1 square.',['cult']);
+C('cult4','Cult 4','bronze','Bronze',[1,2,2],null,'No effect. Part of the Cult 1 square.',['cult']);
+C('oliver','Oliver Obsessive Statistics','bronze','Bronze',[2,0,0],'oliver','While on the board, if you start your turn by rolling a Descension, a Movement and an Attack result, gain +1/+1 Attack and Defence.');
+C('future',"The Future's Fortune",'bronze','Bronze',[0,2,2],'future',"While on the board, if adjacent to The Past's Portway, both may sacrifice themselves to give their stats to your descended Passing Present.");
+C('past',"The Past's Portway",'bronze','Bronze',[0,2,2],'past',"While on the board, if adjacent to The Future's Fortune, both may sacrifice themselves to give their stats to your descended Passing Present.");
+C('stefan','Stefan the Impractical','bronze','Bronze',[2,1,1],'stefan','While on the board, if your opponent has 4 or more Acolytes on the board, gain +2/+2 Attack and Defence.');
+C('sword','Sword in the Lake','bronze','Bronze',[0,2,2],'sword','Can be attacked by either player\'s Acolytes and is destroyed automatically when attacked. The Acolyte that destroys it gains its stats.');
 
 const POOLS = [
   ['Zoa','Control',{albie:1,seojun:1,dusan:1,kaoru:1,yui:1,ella:3,charlotte:1,anina:1},'Descend Ella to remove enemy movement once Albie lands. Buff the Bronzes with Seo-Jun, Yui and Kaoru.'],
@@ -408,11 +485,22 @@ const VARIANTS = (function () {
 
 // ============================================================ HELPERS
 const DIRS = [[1,0],[-1,0],[0,1],[0,-1]];
+const DIRS8 = [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]];
+const CORNERS = [[0,0],[W-1,0],[0,H-1],[W-1,H-1]];
+// "While on the board" effects that Death's Final Embrace can borrow from the Acolytes in your Elysium.
+const WOB = ['seojun','alicia','antoine','salem','gianluca','heaven9','heaven14','heaven23','heaven41','tim','kanda','maverick','marcos','haoyu','clarissa','bastion','azrael','andromeda','sebastian','caoimhin','gwaaganad','emiliano','deepti','richa','bigbear','ayaan','embrace1','embrace2','embrace3','guy','stefan','naomie','gambler','dahlia','kiran','aisha','leon','huimin','alara','maika','present','yiorgos','gianmaria','dusan','talia','oliver','veveve','lisa'];
 const inb = function (x, y) { return x >= 0 && y >= 0 && x < W && y < H; };
 const cd = function (a) { return CARDS[a.cid]; };
 function log(S, m) { if (S.log) { S.log.push(m); if (S.log.length > 80) S.log.shift(); } }
 function pname(S, p) { return S.pl[p].name; }
+// Hien's Fog of War hides identities: while a fogged Acolyte is on the board it has no name.
+function fogged(S, a) {
+  if (a.st !== 'board') return false;
+  for (const id in S.aco) { const h = S.aco[id]; if (h.st === 'board' && h.owner === a.owner && h.abil === 'hien' && has(S, h, 'hien')) return true; }
+  return false;
+}
 function aname(S, a) {
+  if (fogged(S, a)) return 'a Fog of War token';
   const c = cd(a);
   if (c.tags.indexOf('disaster') >= 0) return 'Disaster ' + c.name.split(', ')[1].split(' ')[0];
   return c.name.split(',')[0].replace(/^The /, '');
@@ -426,12 +514,37 @@ function unitAt(S, x, y) {
   for (const id in S.aco) { const a = S.aco[id]; if (a.st === 'board' && a.x === x && a.y === y) return a; }
   return null;
 }
+// Defaced by Sacreligion removes both Fonts from the board while it is active.
+function fontsGone(S) {
+  for (const id in S.aco) { const a = S.aco[id]; if (a.st === 'board' && a.abil === 'defaced' && has(S, a, 'defaced')) return true; }
+  return false;
+}
 function fontAt(S, x, y) {
+  if (fontsGone(S)) return -1;
   for (let p = 0; p < 2; p++) { const f = S.fonts[p]; if (!f.dead && f.x === x && f.y === y) return p; }
   return -1;
 }
 function pathIdAt(S, x, y) { return inb(x, y) ? S.cells[y][x] : null; }
 function built(S, x, y) { return inb(x, y) && S.cells[y][x] !== null; }
+// Labyrinth Maker walls: a wall sits on the edge between two squares and lasts while its maker is on the board.
+function wallBlocks(S, x1, y1, x2, y2) {
+  if (!S.walls || !S.walls.length) return false;
+  return S.walls.some(function (w) {
+    const u = S.aco[w.src]; if (!u || u.st !== 'board') return false;
+    return (w.a[0] === x1 && w.a[1] === y1 && w.b[0] === x2 && w.b[1] === y2) || (w.a[0] === x2 && w.a[1] === y2 && w.b[0] === x1 && w.b[1] === y1);
+  });
+}
+// Free square next to a player's Font (used by Vanessa and Break and Mend).
+function freeAdjFont(S, p) {
+  const f = S.fonts[p]; let best = null;
+  DIRS.forEach(function (d) {
+    const x = f.x + d[0], y = f.y + d[1];
+    if (!inb(x, y) || unitAt(S, x, y) || fontAt(S, x, y) >= 0) return;
+    const sc = built(S, x, y) ? 1 : 0;
+    if (!best || sc > best.sc) best = { x: x, y: y, sc: sc };
+  });
+  return best;
+}
 
 // ============================================================ EFFECT ACTIVITY
 function suppressed(S, a) {
@@ -447,6 +560,9 @@ function ab(S, a) {
   if (a.st !== 'board' || suppressed(S, a)) return [];
   const r = [];
   if (a.abil) r.push(a.abil);
+  if (a.abil === 'dfe') {
+    S.pl[a.owner].elysium.forEach(function (id) { const e = S.aco[id]; if (e && e.abil && WOB.indexOf(e.abil) >= 0) r.push(e.abil); });
+  }
   if (a.zoa) for (const k in a.zoa) for (let i = 0; i < a.zoa[k]; i++) r.push('z_' + k);
   return r;
 }
@@ -457,6 +573,8 @@ function immune(S, t, src) {
   return t.owner !== src.owner && t.zoa && t.zoa.charlotte > 0 && !suppressed(S, t);
 }
 const adj = function (a, b) { return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) === 1; };
+// Talia lets you move (not attack with) your opponent's Acolytes.
+function commandable(S, p, u) { return u.st === 'board' && (u.owner === p || ownerHas(S, p, 'talia')); }
 
 // ============================================================ STATS
 function stat(S, a, skipSeo) {
@@ -469,6 +587,7 @@ function stat(S, a, skipSeo) {
     if (!emi) {
       m += a.mods[0]; at += a.mods[1]; d += a.mods[2];
       const myPath = pathIdAt(S, a.x, a.y);
+      const isEmb = cd(a).tags.indexOf('embrace') >= 0;
       for (const o of act) {
         const s = o.s;
         for (const k of o.k) {
@@ -485,9 +604,20 @@ function stat(S, a, skipSeo) {
             case 'gianluca': if (s.dPath && myPath === s.dPath && !immune(S, a, s)) { at -= 1; d -= 1; } break;
             case 'egg5': if (s === a && a.hatched) { m += 5; at += 5; d += 5; } break;
             case 'egg3': if (s === a && a.hatched) { m += 3; at += 3; d += 3; } break;
+            case 'deepti': if (s === a && boardUnits(S, s.owner).some(function (u) { return u.cid === 'richa'; })) { at += 2; d += 3; } break;
+            case 'richa': if (s === a && boardUnits(S, s.owner).some(function (u) { return u.cid === 'deepti'; })) { at += 3; d += 2; } break;
+            case 'bigbear': if (s === a && S.pl[s.owner].elysium.some(function (id) { return S.aco[id].cid === 'bigbearbaby'; })) { at += 2; d += 2; } break;
+            case 'ayaan': if (s.owner === a.owner && s.dPath && myPath === s.dPath) { at += 2; d += 2; } break;
+            case 'embrace1': if (isEmb && s.owner === a.owner) d += 1; break;
+            case 'embrace2': if (isEmb && s.owner === a.owner) at += 1; break;
+            case 'embrace3': if (isEmb && s.owner === a.owner) m += 1; break;
+            case 'guy': if (s === a && boardUnits(S, a.owner).some(function (u) { return u !== a && adj(u, a); })) { at += 2; d += 2; } break;
+            case 'stefan': if (s === a && boardUnits(S, 1 - a.owner).length >= 4) { at += 2; d += 2; } break;
           }
         }
       }
+      // Naomie doubles Attack and Defence after every other change.
+      if (act.some(function (o) { return o.s === a && o.k.indexOf('naomie') >= 0; })) { at *= 2; d *= 2; }
     }
     for (const o of act) {
       for (const k of o.k) {
@@ -495,14 +625,19 @@ function stat(S, a, skipSeo) {
         if (k === 'tim' && !immune(S, a, o.s)) m = 2;
       }
     }
+    if (a.harry) { const h = S.aco[a.harry]; if (h && h.st === 'board' && has(S, h, 'harry') && !immune(S, a, h)) m = 0; }
   }
   return { m: Math.max(0, m), a: Math.max(0, at), d: Math.max(0, d) };
 }
 function fontStat(S, p) {
-  let m = 0, a = 0, d = 0;
+  let m = 0, a = 0, d = 0, dbl = false;
   boardUnits(S, p).forEach(function (u) {
-    ab(S, u).forEach(function (k) { if (k === 'heaven14') m += 2; if (k === 'heaven23') a += 2; if (k === 'heaven41') d += 2; });
+    ab(S, u).forEach(function (k) {
+      if (k === 'heaven14') m += 2; if (k === 'heaven23') a += 2; if (k === 'heaven41') d += 2;
+      if (k === 'heaven9') dbl = true;
+    });
   });
+  if (dbl) { m *= 2; a *= 2; d *= 2; }
   return { m: m, a: a, d: d };
 }
 
@@ -512,7 +647,7 @@ function newGame(setup) {
   const S = {
     rev: 0, turnNo: 0, cur: first, first: first, phase: 'roll', winner: null, reason: '',
     cells: [], paths: {}, pathN: 0, fonts: [], aco: {}, dice: {}, pl: [], tokens: [], tokN: 0,
-    rerolls: 0, pending: null, lastDest: null, log: []
+    rerolls: 0, pending: null, lastDest: null, log: [], walls: [], omens: [], endSt: null
   };
   for (let y = 0; y < H; y++) { S.cells.push(new Array(W).fill(null)); }
   S.fonts = [
@@ -521,11 +656,11 @@ function newGame(setup) {
   ];
   for (let p = 0; p < 2; p++) {
     const pool = setup.pools[p];
-    const pl = { name: setup.names[p], ai: !!(setup.ai && setup.ai[p]), acos: [], dice: [], elysium: [], firstDesc: false };
+    const pl = { name: setup.names[p], ai: !!(setup.ai && setup.ai[p]), acos: [], dice: [], elysium: [], firstDesc: false, descN: 0 };
     pool.cards.forEach(function (cid, i) {
       const id = 'a' + p + '_' + i, did = 'd' + p + '_' + i;
       S.aco[id] = { id: id, cid: cid, owner: p, home: p, st: 'pool', x: null, y: null, dPath: null, mods: [0, 0, 0],
-        abil: CARDS[cid].abil, zoa: null, hatched: false, eggT: 0, soniaTurn: -1, siti: null, alexi: false };
+        abil: CARDS[cid].abil, zoa: null, hatched: false, eggT: 0, soniaTurn: -1, siti: null, alexi: false, ot: 0, dt: false, rem: null, harry: null, mustAtk: null };
       S.dice[did] = { id: did, owner: p, tier: CARDS[cid].tier, rainbow: pool.rainbow === i, st: 'pool' };
       pl.acos.push(id); pl.dice.push(did);
     });
@@ -537,7 +672,10 @@ function newGame(setup) {
 }
 
 function poolDice(S, p) { return S.pl[p].dice.filter(function (d) { return S.dice[d].st === 'pool'; }); }
-function rollLimit(S) { return Math.min(S.turnNo === 0 ? FIRST_TURN_ROLL : MAX_ROLL, poolDice(S, S.cur).length); }
+function rollLimit(S) {
+  const extra = boardUnits(S).filter(function (u) { return has(S, u, 'gambler'); }).length;
+  return Math.min((S.turnNo === 0 ? FIRST_TURN_ROLL : MAX_ROLL) + extra, poolDice(S, S.cur).length);
+}
 function startTurn(S) {
   S.tokens = []; S.rerolls = 0; S.phase = 'roll';
   if (poolDice(S, S.cur).length === 0) {
@@ -549,12 +687,26 @@ function startTurn(S) {
 
 // ============================================================ END / WIN
 function endGame(S, w, reason) {
-  S.phase = 'over'; S.winner = w; S.reason = reason; S.pending = null;
+  S.phase = 'over'; S.winner = w; S.reason = reason; S.pending = null; S.endSt = null;
   log(S, w === null ? 'Game drawn. ' + reason : pname(S, w) + ' wins! ' + reason);
 }
 function checkEnd(S) {
   if (S.phase === 'over') return;
-  for (let p = 0; p < 2; p++) if (S.fonts[p].dead) { endGame(S, 1 - p, pname(S, p) + '\'s Font was destroyed.'); return; }
+  if (!fontsGone(S)) {
+    for (let p = 0; p < 2; p++) if (S.fonts[p].dead) { endGame(S, 1 - p, pname(S, p) + '\'s Font was destroyed.'); return; }
+    // Fonts coming back onto an occupied square crush whoever is standing there.
+    for (let p = 0; p < 2; p++) {
+      const f = S.fonts[p], o = unitAt(S, f.x, f.y);
+      if (o) { log(S, 'The returning Font crushes ' + aname(S, o) + '.'); destroy(S, o, null, { noSonia: true, noRevive: true }); }
+    }
+  }
+  const bu = boardUnits(S);
+  for (const u of bu) {
+    if (S.phase === 'over') return;
+    if (u.st === 'board' && u.abil === 'vangelis' && has(S, u, 'vangelis') && CORNERS.every(function (c) { return unitAt(S, c[0], c[1]); })) {
+      endGame(S, u.owner, 'Vangelis: Acolytes hold all four corners.'); return;
+    }
+  }
   if (S.pl[0].firstDesc && S.pl[1].firstDesc) {
     const n0 = boardUnits(S, 0).length, n1 = boardUnits(S, 1).length;
     if (n0 === 0 && n1 === 0) endGame(S, null, 'Both boards are empty.');
@@ -573,22 +725,46 @@ function destroy(S, a, by, opts) {
     log(S, aname(S, a) + ' is renewed (+1 Attack) instead of being destroyed.');
     return false;
   }
+  if (!opts.noRevive && has(S, a, 'vanessa')) {
+    const cell = freeAdjFont(S, a.owner);
+    if (cell) {
+      a.x = cell.x; a.y = cell.y; a.mods[1] += 1; a.mods[2] += 1;
+      log(S, 'Vanessa rises again next to the Font (+1/+1).');
+      return false;
+    }
+  }
   const st = stat(S, a);
   S.lastDest = [st.m, st.a, st.d];
   const siti = a.siti, wasSiti = has(S, a, 'siti');
-  a.st = opts.to || 'elysium'; a.x = null; a.y = null;
+  const twin = has(S, a, 'richa') ? 'deepti' : (has(S, a, 'deepti') ? 'richa' : null);
+  const anj = has(S, a, 'anjali') && a.rem ? a.rem : null;
+  const ox = a.x, oy = a.y, own = a.owner;
+  const nm = aname(S, a);
+  a.st = opts.to || 'elysium'; a.x = null; a.y = null; a.dt = false;
   if (a.st === 'elysium') S.pl[a.home].elysium.push(a.id);
-  log(S, aname(S, a) + ' is destroyed' + (a.st === 'lili' ? ' (to Lilili\'s Zone).' : '.'));
+  log(S, nm + ' is destroyed' + (a.st === 'lili' ? ' (to Lilili\'s Zone).' : '.'));
   if (wasSiti && siti && S.aco[siti] && S.aco[siti].st === 'board') {
     log(S, 'Siti\'s link takes ' + aname(S, S.aco[siti]) + ' with it.');
     destroy(S, S.aco[siti], null, {});
+  }
+  if (twin) {
+    const t = boardUnits(S, own).find(function (u) { return u.cid === twin; });
+    if (t) { log(S, 'The star-crossed pair falls together.'); destroy(S, t, null, { noSonia: true, noRevive: true }); }
+  }
+  if (anj) {
+    const r = S.aco[anj];
+    if (r && r.st === 'aside') {
+      if (ox !== null && !unitAt(S, ox, oy)) { r.st = 'board'; r.x = ox; r.y = oy; r.owner = own; log(S, aname(S, r) + ' returns in Anjali\'s place.'); }
+      else { r.st = 'elysium'; S.pl[r.home].elysium.push(r.id); }
+    }
   }
   return true;
 }
 
 // ============================================================ PLACEMENT
 function cellsOf(v, ax, ay) { return v.offs.map(function (o) { return [ax + o[0], ay + o[1]]; }); }
-function canPlace(S, p, vi, ax, ay) {
+// free = The Great Mystery: the Pathway need not touch anything of yours.
+function canPlace(S, p, vi, ax, ay, free) {
   const v = VARIANTS[vi]; if (!v) return false;
   const cs = cellsOf(v, ax, ay);
   let attach = false;
@@ -598,24 +774,27 @@ function canPlace(S, p, vi, ax, ay) {
     if (fontAt(S, c[0], c[1]) >= 0) return false;
     if (unitAt(S, c[0], c[1])) return false;
   }
+  if (free) return true;
+  const fg = fontsGone(S);
   for (const c of cs) for (const d of DIRS) {
     const nx = c[0] + d[0], ny = c[1] + d[1];
     if (!inb(nx, ny)) continue;
     const f = S.fonts[p];
-    if (!f.dead && f.x === nx && f.y === ny) attach = true;
+    if (!fg && !f.dead && f.x === nx && f.y === ny) attach = true;
     const pid = S.cells[ny][nx];
     if (pid && S.paths[pid].owner === p) attach = true;
   }
   return attach;
 }
-function placements(S, p, onlyShape) {
+function placements(S, p, onlyShape, free) {
   const out = [];
   VARIANTS.forEach(function (v, vi) {
     if (onlyShape !== undefined && v.shape !== onlyShape) return;
-    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (canPlace(S, p, vi, x, y)) out.push({ vi: vi, ax: x, ay: y });
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (canPlace(S, p, vi, x, y, free)) out.push({ vi: vi, ax: x, ay: y });
   });
   return out;
 }
+function placementFree(S, aId) { const a = S.aco[aId]; return !!a && a.abil === 'mystery' && !suppressed(S, a); }
 function layPath(S, p, pl) {
   const id = 'P' + (++S.pathN);
   const cs = cellsOf(VARIANTS[pl.vi], pl.ax, pl.ay);
@@ -630,10 +809,23 @@ function removePath(S, id) {
 }
 
 // ============================================================ DESCENT
+// Some Acolytes can only be descended when a condition holds.
+function reqOk(S, p, a) {
+  if (a.cid === 'dfe') {
+    const ely = S.pl[p].elysium.map(function (id) { return S.aco[id].cid; });
+    return ['embrace1', 'embrace2', 'embrace3'].every(function (c) { return ely.indexOf(c) >= 0; });
+  }
+  if (a.cid === 'liekeR') {
+    const bu = boardUnits(S, p);
+    return bu.some(function (u) { return u.cid === 'mylene'; }) && bu.some(function (u) { return u.cid === 'lieke'; });
+  }
+  return true;
+}
 function descendOptions(S, p, tok) {
   return S.pl[p].acos.filter(function (id) {
     const a = S.aco[id];
     if (a.st !== 'pool') return false;
+    if (!reqOk(S, p, a)) return false;
     if (tok.any) return true;
     return cd(a).tier === tok.tier;
   });
@@ -644,13 +836,14 @@ function placeAcolyte(S, p, aId, pl, ctx) {
   const a = S.aco[aId];
   const pid = layPath(S, p, pl);
   a.st = 'board'; a.x = pl.ax; a.y = pl.ay; a.dPath = pid; a.owner = p;
-  S.pl[p].firstDesc = true;
+  S.pl[p].firstDesc = true; S.pl[p].descN = (S.pl[p].descN || 0) + 1;
   log(S, pname(S, p) + ' descends ' + aname(S, a) + '.');
   if (!suppressed(S, a)) runDescend(S, a, ctx || {});
   checkEnd(S);
 }
 
 function pend(S, o) { S.pending = o; }
+function enemyOpts(S, a) { return boardUnits(S, 1 - a.owner).filter(function (u) { return !immune(S, u, a); }).map(function (u) { return u.id; }); }
 function runDescend(S, a, ctx) {
   const p = a.owner, k = a.abil;
   switch (k) {
@@ -707,6 +900,7 @@ function runDescend(S, a, ctx) {
     case 'abu': boardUnits(S, p).forEach(function (u) { if (u.abil === 'egg5' || u.abil === 'egg3') u.hatched = true; }); log(S, 'Abu hatches all your eggs!'); break;
     case 'shroud': S.fonts[p].shroud = true; log(S, pname(S, p) + '\'s Font is shrouded.'); break;
     case 'heaven10': if (S.fonts[p].survived >= 3) endGame(S, p, 'The 10th Heaven: the Font survived 3 battles.'); break;
+    case 'theend': if ((S.pl[p].descN || 0) - 1 >= 9) endGame(S, p, 'The End: nine other Acolytes have descended.'); break;
     case 'eun': {
       const opts = boardUnits(S).filter(function (u) { return u !== a && u.abil && u.abil !== 'eun' && u.abil !== 'mutya'; }).map(function (u) { return u.id; });
       if (opts.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'eun', opts: opts, prompt: 'Eun-Kyung: choose an Acolyte to copy the ability of.' });
@@ -741,29 +935,123 @@ function runDescend(S, a, ctx) {
       break;
     }
     case 'creator': {
+      // Replace as many Acolytes on the field as possible with Acolytes from your Elysium. The enemy's go first (strongest first).
       const mine = S.pl[p].elysium.slice().sort(function (x, y) { const sx = cd(S.aco[x]).stats, sy = cd(S.aco[y]).stats; return (sx[1] + sx[2]) - (sy[1] + sy[2]); });
-      const foes = boardUnits(S, 1 - p).filter(function (u) { return !immune(S, u, a); }).sort(function (x, y) { const sx = stat(S, x), sy = stat(S, y); return (sy.a + sy.d) - (sx.a + sx.d); });
+      const field = boardUnits(S).filter(function (u) { return u !== a && !immune(S, u, a); });
+      field.sort(function (x, y) {
+        if ((x.owner === p) !== (y.owner === p)) return x.owner === p ? 1 : -1;
+        const sx = stat(S, x), sy = stat(S, y);
+        return x.owner === p ? (sx.a + sx.d) - (sy.a + sy.d) : (sy.a + sy.d) - (sx.a + sx.d);
+      });
       let n = 0;
-      foes.forEach(function (f) {
+      field.forEach(function (f) {
         if (!mine.length) return;
         const repId = mine.shift(), rep = S.aco[repId];
         S.pl[p].elysium = S.pl[p].elysium.filter(function (q) { return q !== repId; });
-        const fx = f.x, fy = f.y, fpath = f.dPath;
+        const fx = f.x, fy = f.y, fpath = f.dPath, fown = f.owner;
         f.st = 'elysium'; f.x = null; f.y = null; S.pl[f.home].elysium.push(f.id);
-        rep.st = 'board'; rep.x = fx; rep.y = fy; rep.owner = f.owner; rep.dPath = fpath;
+        rep.st = 'board'; rep.x = fx; rep.y = fy; rep.owner = fown; rep.dPath = fpath;
         rep.mods = [0, 0, 0];
         n++;
       });
       log(S, 'The Unruly Creator swaps ' + n + ' Acolyte(s).');
       break;
     }
+    case 'omen': {
+      boardUnits(S).forEach(function (u) { u.dt = true; });
+      S.omens = S.omens || []; S.omens.push({ owner: p, left: 3 });
+      log(S, 'The Omen: every Acolyte on the board is marked for death in 3 turns.');
+      break;
+    }
+    case 'asura': {
+      const q = 1 - p;
+      const cand = S.pl[q].acos.filter(function (id) { const u = S.aco[id]; return u.st === 'pool' || u.st === 'elysium'; })
+        .sort(function (x, y) { const sx = cd(S.aco[x]).stats, sy = cd(S.aco[y]).stats; return (sy[1] + sy[2]) - (sx[1] + sx[2]); });
+      const slots = [];
+      for (const pid in S.paths) if (S.paths[pid].owner === q) S.paths[pid].cells.forEach(function (c) {
+        if (!unitAt(S, c[0], c[1]) && fontAt(S, c[0], c[1]) < 0) slots.push({ x: c[0], y: c[1], pid: pid, d: dist(c[0], c[1], S.fonts[p].x, S.fonts[p].y) });
+      });
+      slots.sort(function (x, y) { return x.d - y.d; });
+      let n = 0;
+      cand.forEach(function (id) {
+        if (!slots.length) return;
+        const u = S.aco[id], sl = slots.shift();
+        if (u.st === 'elysium') S.pl[u.home].elysium = S.pl[u.home].elysium.filter(function (e) { return e !== id; });
+        else { const di = S.pl[q].acos.indexOf(id), die = S.dice[S.pl[q].dice[di]]; if (die) die.st = 'used'; }
+        u.st = 'board'; u.x = sl.x; u.y = sl.y; u.dPath = sl.pid; u.owner = q; u.mods = [0, 0, 0];
+        S.pl[q].descN = (S.pl[q].descN || 0) + 1; S.pl[q].firstDesc = true; n++;
+      });
+      boardUnits(S, p).forEach(function (u) { if (u !== a) destroy(S, u, a, {}); });
+      log(S, 'The Absolute Asura: ' + pname(S, q) + ' descends ' + n + ' Acolyte(s) and ' + pname(S, p) + ' destroys the rest of their board.');
+      break;
+    }
+    case 'lester': {
+      const n = S.pl[0].elysium.length + S.pl[1].elysium.length;
+      if (n >= 10) { a.mods[1] += 2; a.mods[2] += 2; log(S, 'Lester feeds on ' + n + ' fallen Acolytes (+2/+2).'); }
+      break;
+    }
+    case 'sacrilege':
+      pend(S, { kind: 'pickOpt', player: p, src: a.id, cont: 'sacrilege', opts: [{ v: '1', label: 'Lose 1' }, { v: '2', label: 'Lose 2' }, { v: '3', label: 'Lose 3' }], prompt: 'The Sacrilegious Offering: how much Attack and Defence do the other Acolytes on this Pathway lose?' });
+      break;
+    case 'clay': { const o = enemyOpts(S, a); if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'clay', opts: o, prompt: 'The Clay Soldier: choose an enemy Acolyte to copy the Attack and Defence of.' }); break; }
+    case 'ali': { const o = enemyOpts(S, a); if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'ali', opts: o, prompt: 'Ali: choose an enemy Acolyte to halve the Attack and Defence of.' }); break; }
+    case 'ivan': { const o = enemyOpts(S, a); if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'ivan', opts: o, prompt: 'Ivan: choose an enemy Acolyte. It may only attack Ivan.' }); break; }
+    case 'harry': { const o = enemyOpts(S, a); if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'harry', opts: o, prompt: 'Harry: choose an enemy Acolyte to hold in place (Movement 0).' }); break; }
+    case 'mata': { const o = enemyOpts(S, a); if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'mata', opts: o, prompt: 'Mata: choose an enemy Acolyte to swap positions with.' }); break; }
+    case 'chalice': { const o = enemyOpts(S, a); if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'chalice', opts: o, optional: true, prompt: 'Poison Chalice: choose an enemy Acolyte to poison, or skip.' }); break; }
+    case 'meng': {
+      const o = boardUnits(S).filter(function (u) { return !immune(S, u, a); }).map(function (u) { return u.id; });
+      if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'meng', opts: o, prompt: 'Mèng: choose an Acolyte to move all its Attack into Defence (or the reverse).' });
+      break;
+    }
+    case 'whack': {
+      const o = boardUnits(S, p).map(function (u) { return u.id; });
+      if (o.length > 1) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'whack', opts: o, optional: true, prompt: 'Holy Whackamole: pick an Acolyte of yours to swap, then a second one. Skip when you are done.' });
+      break;
+    }
+    case 'anjali': {
+      const o = boardUnits(S, p).filter(function (u) { return u !== a; }).map(function (u) { return u.id; });
+      if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'anjali', opts: o, prompt: 'Anjali: choose one of your Acolytes to remove from the board. It returns when Anjali is destroyed.' });
+      break;
+    }
+    case 'mylene': {
+      const o = boardUnits(S).filter(function (u) { return u !== a && !immune(S, u, a); }).map(function (u) { return u.id; });
+      if (o.length) pend(S, { kind: 'pickUnit', player: p, src: a.id, cont: 'mylene', opts: o, prompt: 'Mylène: choose another Acolyte to revert to its original stats.' });
+      break;
+    }
+    case 'labyrinth': {
+      const o = [];
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (built(S, x, y)) o.push([x, y]);
+      if (o.length) pend(S, { kind: 'pickCell', player: p, src: a.id, cont: 'labCell', opts: o, prompt: 'Labyrinth Maker: choose a Pathway square to put a wall beside.' });
+      break;
+    }
   }
+}
+
+// After a unit moves, Alara may fling it somewhere else on the Path.
+function afterMove(S, u) {
+  if (u.st !== 'board' || S.phase === 'over' || S.pending) return;
+  const al = boardUnits(S, u.owner).find(function (b) { return b !== u && has(S, b, 'alara') && adj(b, u); });
+  if (!al) return;
+  const opts = [];
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (!built(S, x, y) || unitAt(S, x, y) || fontAt(S, x, y) >= 0) continue;
+    if (Math.abs(x - u.x) + Math.abs(y - u.y) > 5 || (x === u.x && y === u.y)) continue;
+    opts.push([x, y]);
+  }
+  if (opts.length) pend(S, { kind: 'pickCell', player: u.owner, src: al.id, cont: 'alara', unit: u.id, opts: opts, optional: true, prompt: 'Alara: move ' + aname(S, u) + ' up to 5 squares to an open Path square, or skip.' });
 }
 
 function resolvePending(S, choice) {
   const P = S.pending; if (!P) return false;
   const a = S.aco[P.src];
   const clear = function () { S.pending = null; checkEnd(S); };
+  const inOpts = function (id) { return P.opts.indexOf(id) >= 0; };
+  if (choice.skip && P.optional && P.cont === 'whack2') {
+    S.pending = { kind: 'pickUnit', player: P.player, src: P.src, cont: 'whack', opts: boardUnits(S, P.player).map(function (u) { return u.id; }), optional: true, prompt: 'Holy Whackamole: swap more Acolytes, or skip when you are done.' };
+    return true;
+  }
+  if (choice.skip && P.optional) { clear(); return true; }
   switch (P.cont) {
     case 'eun': {
       const t = S.aco[choice.id]; if (!t || P.opts.indexOf(t.id) < 0) return false;
@@ -807,9 +1095,125 @@ function resolvePending(S, choice) {
         const f = S.fonts[P.player], tx = tgt.x, ty = tgt.y;
         tgt.x = f.x; tgt.y = f.y; f.x = tx; f.y = ty;
         log(S, '5th Heaven Above swaps ' + aname(S, tgt) + ' with the Font!');
-        battle(S, atk, { t: 'font', p: P.player });
-      } else battle(S, atk, { t: 'unit', id: tgt.id });
+        battle(S, atk, { t: 'font', p: P.player }, { bonus: P.bonus });
+      } else battle(S, atk, { t: 'unit', id: tgt.id }, { bonus: P.bonus });
       checkEnd(S); return true;
+    }
+    case 'reactM': {
+      const atk = S.aco[P.atk], tgt = S.aco[P.target];
+      S.pending = null;
+      if (choice.yes && tgt.st === 'board' && a.st === 'board') {
+        const tx = tgt.x, ty = tgt.y; tgt.x = a.x; tgt.y = a.y; a.x = tx; a.y = ty;
+        log(S, 'Maika takes the blow meant for ' + aname(S, tgt) + '.');
+        startAttack(S, atk, { t: 'unit', id: a.id }, { bonus: P.bonus, skipM: true });
+      } else startAttack(S, atk, { t: 'unit', id: tgt.id }, { bonus: P.bonus, skipM: true });
+      checkEnd(S); return true;
+    }
+    case 'clay': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); const ts = stat(S, t), os = stat(S, a);
+      a.mods[1] += ts.a - os.a; a.mods[2] += ts.d - os.d;
+      log(S, 'The Clay Soldier becomes ' + ts.a + '/' + ts.d + '.'); return true;
+    }
+    case 'ali': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); const s = stat(S, t);
+      t.mods[1] -= s.a / 2; t.mods[2] -= s.d / 2;
+      log(S, 'Ali halves ' + aname(S, t) + '.'); return true;
+    }
+    case 'ivan': { const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false; clear(); t.mustAtk = a.id; log(S, aname(S, t) + ' may only attack Ivan now.'); return true; }
+    case 'harry': { const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false; clear(); t.harry = a.id; log(S, aname(S, t) + ' is stuck in the bog.'); return true; }
+    case 'mata': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); const tx = t.x, ty = t.y; t.x = a.x; t.y = a.y; a.x = tx; a.y = ty;
+      log(S, 'Mata swaps places with ' + aname(S, t) + '.'); return true;
+    }
+    case 'whack': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      S.pending = { kind: 'pickUnit', player: P.player, src: P.src, cont: 'whack2', first: t.id, opts: P.opts.filter(function (i) { return i !== t.id; }), optional: true, prompt: 'Holy Whackamole: pick the Acolyte to swap places with ' + aname(S, t) + ', or skip to choose again.' };
+      return true;
+    }
+    case 'whack2': {
+      const f = S.aco[P.first], t = S.aco[choice.id]; if (!f || !t || !inOpts(t.id)) return false;
+      const fx = f.x, fy = f.y; f.x = t.x; f.y = t.y; t.x = fx; t.y = fy;
+      log(S, 'Holy Whackamole swaps ' + aname(S, f) + ' and ' + aname(S, t) + '.');
+      S.pending = { kind: 'pickUnit', player: P.player, src: P.src, cont: 'whack', opts: boardUnits(S, P.player).map(function (u) { return u.id; }), optional: true, prompt: 'Holy Whackamole: swap more Acolytes, or skip when you are done.' };
+      return true;
+    }
+    case 'anjali': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); t.st = 'aside'; t.x = null; t.y = null; a.rem = t.id;
+      log(S, aname(S, t) + ' is set aside by Anjali.'); return true;
+    }
+    case 'mylene': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); t.mods = [0, 0, 0]; log(S, 'Mylène reverts ' + aname(S, t) + ' to its original stats.'); return true;
+    }
+    case 'meng': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      S.pending = { kind: 'pickOpt', player: P.player, src: P.src, cont: 'mengOpt', target: t.id, opts: [{ v: 'a2d', label: 'Attack → Defence' }, { v: 'd2a', label: 'Defence → Attack' }], prompt: 'Mèng: which stat goes to 0 and is added to the other?' };
+      return true;
+    }
+    case 'mengOpt': {
+      const t = S.aco[P.target]; if (choice.v !== 'a2d' && choice.v !== 'd2a') return false;
+      clear(); const s = stat(S, t);
+      if (choice.v === 'a2d') { t.mods[1] -= s.a; t.mods[2] += s.a; } else { t.mods[2] -= s.d; t.mods[1] += s.d; }
+      log(S, 'Mèng reshapes ' + aname(S, t) + '.'); return true;
+    }
+    case 'chalice': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      const cs = stat(S, a), o = [];
+      [['M', cs.m, 'Movement'], ['A', cs.a, 'Attack'], ['D', cs.d, 'Defence']].forEach(function (x) { if (x[1] > 0) o.push(x); });
+      const opts = [{ v: '', label: 'Do nothing' }];
+      for (let mask = 1; mask < (1 << o.length); mask++) {
+        const sel = o.filter(function (x, i) { return mask & (1 << i); });
+        opts.push({ v: sel.map(function (x) { return x[0]; }).join(''), label: sel.map(function (x) { return '−' + x[1] + ' ' + x[2]; }).join(', ') });
+      }
+      S.pending = { kind: 'pickOpt', player: P.player, src: P.src, cont: 'chaliceOpt', target: t.id, opts: opts, prompt: 'Poison Chalice: drain which stats from the Chalice? The enemy loses the same amount.' };
+      return true;
+    }
+    case 'chaliceOpt': {
+      const t = S.aco[P.target]; if (!P.opts.some(function (x) { return x.v === choice.v; })) return false;
+      clear(); const cs = stat(S, a);
+      String(choice.v).split('').forEach(function (ch) {
+        const i = ch === 'M' ? 0 : (ch === 'A' ? 1 : 2), amt = i === 0 ? cs.m : (i === 1 ? cs.a : cs.d);
+        a.mods[i] -= amt; t.mods[i] -= amt;
+      });
+      if (choice.v) log(S, 'The Chalice poisons ' + aname(S, t) + '.');
+      return true;
+    }
+    case 'sacrilege': {
+      const n = Number(choice.v); if (!(n >= 1 && n <= 3)) return false;
+      clear(); const pid = pathIdAt(S, a.x, a.y);
+      boardUnits(S).forEach(function (u) {
+        if (u !== a && pid && pathIdAt(S, u.x, u.y) === pid && !immune(S, u, a)) { u.mods[1] -= n; u.mods[2] -= n; }
+      });
+      log(S, 'The Sacrilegious Offering drains ' + n + ' from everyone on its Pathway.'); return true;
+    }
+    case 'labCell': {
+      const c = choice.cell; if (!c || !P.opts.some(function (o) { return o[0] === c[0] && o[1] === c[1]; })) return false;
+      S.pending = { kind: 'pickOpt', player: P.player, src: P.src, cont: 'labSide', cell: c, opts: [{ v: '0', label: 'East' }, { v: '1', label: 'West' }, { v: '2', label: 'South' }, { v: '3', label: 'North' }], prompt: 'Labyrinth Maker: which side of that square gets the wall?' };
+      return true;
+    }
+    case 'labSide': {
+      const di = Number(choice.v); if (!(di >= 0 && di < 4)) return false;
+      clear(); const c = P.cell, d = DIRS[di];
+      S.walls.push({ a: [c[0], c[1]], b: [c[0] + d[0], c[1] + d[1]], src: a.id });
+      log(S, 'A wall rises beside a Pathway square.'); return true;
+    }
+    case 'fallen': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); log(S, t === a ? 'The Fallen gives itself up.' : 'The Fallen demands ' + aname(S, t) + '.');
+      destroy(S, t, a, {}); checkEnd(S); return true;
+    }
+    case 'accrete': {
+      const t = S.aco[choice.id]; if (!t || !inOpts(t.id)) return false;
+      clear(); startAttack(S, a, { t: 'unit', id: t.id }, {}); return true;
+    }
+    case 'alara': {
+      const c = choice.cell, u = S.aco[P.unit];
+      if (!c || !P.opts.some(function (o) { return o[0] === c[0] && o[1] === c[1]; })) return false;
+      clear(); u.x = c[0]; u.y = c[1]; log(S, 'Alara flings ' + aname(S, u) + ' across the Path.'); return true;
     }
   }
   return false;
@@ -834,6 +1238,7 @@ function moveDests(S, u) {
   let budget = stat(S, u).m;
   if (bastionAdj(S, u.x, u.y, u)) budget = 1;
   const haoyu = keys.indexOf('haoyu') >= 0, marcos = keys.indexOf('marcos') >= 0, clar = ownerHas(S, u.owner, 'clarissa');
+  const dirs = keys.indexOf('kiran') >= 0 ? DIRS8 : DIRS;
   const freeGround = haoyu || clar;
   const seen = {}; const res = [];
   const q = [[u.x, u.y, 0]]; seen[u.y * W + u.x] = 0;
@@ -841,9 +1246,10 @@ function moveDests(S, u) {
     const cur = q.shift(), x = cur[0], y = cur[1], k = cur[2];
     if (k >= budget) continue;
     if (k > 0 && bastionAdj(S, x, y, u)) continue;
-    for (const d of DIRS) {
+    for (const d of dirs) {
       const nx = x + d[0], ny = y + d[1];
       if (!inb(nx, ny) || fontAt(S, nx, ny) >= 0) continue;
+      if (wallBlocks(S, x, y, nx, ny)) continue;
       if (!freeGround && !built(S, nx, ny)) continue;
       const occ = unitAt(S, nx, ny);
       if (occ && !marcos) continue;
@@ -854,17 +1260,34 @@ function moveDests(S, u) {
       q.push([nx, ny, k + 1]);
     }
   }
+  // Huimin: hop between the two end squares of her row or column when both are built.
+  if (keys.indexOf('huimin') >= 0 && budget >= 1) {
+    const pairs = [];
+    if (built(S, 0, u.y) && built(S, W - 1, u.y)) pairs.push([[0, u.y], [W - 1, u.y]]);
+    if (built(S, u.x, 0) && built(S, u.x, H - 1)) pairs.push([[u.x, 0], [u.x, H - 1]]);
+    pairs.forEach(function (pr) {
+      pr.forEach(function (c, i) {
+        const o = pr[1 - i];
+        if (u.x === c[0] && u.y === c[1] && !unitAt(S, o[0], o[1]) && fontAt(S, o[0], o[1]) < 0) res.push({ x: o[0], y: o[1], k: 1 });
+      });
+    });
+  }
   const uniq = {}; res.forEach(function (r) { const key = r.y * W + r.x; if (!uniq[key] || uniq[key].k > r.k) uniq[key] = r; });
   return Object.keys(uniq).map(function (k) { return uniq[k]; });
 }
+// Fenrir slides and shoves; Dahlia slides but stops at the first Acolyte.
+function slideKind(S, u) { if (has(S, u, 'fenrir')) return 'fenrir'; if (has(S, u, 'dahlia')) return 'dahlia'; return null; }
 function fenrirRuns(S, u) {
-  if (u.st !== 'board' || !has(S, u, 'fenrir') || locked(S, u)) return [];
+  if (u.st !== 'board' || locked(S, u)) return [];
+  const kind = slideKind(S, u); if (!kind) return [];
   const out = [];
   DIRS.forEach(function (d, di) {
     let x = u.x, y = u.y; const passed = []; let n = 0;
     for (;;) {
       const nx = x + d[0], ny = y + d[1];
       if (!inb(nx, ny) || !built(S, nx, ny) || fontAt(S, nx, ny) >= 0) break;
+      if (wallBlocks(S, x, y, nx, ny)) break;
+      if (kind === 'dahlia' && unitAt(S, nx, ny)) break;
       x = nx; y = ny; n++;
       const o = unitAt(S, x, y); if (o) passed.push(o.id);
     }
@@ -873,12 +1296,14 @@ function fenrirRuns(S, u) {
   return out;
 }
 function doFenrir(S, u, di) {
-  const d = DIRS[di];
+  const d = DIRS[di], kind = slideKind(S, u);
   let x = u.x, y = u.y;
   for (;;) {
     const nx = x + d[0], ny = y + d[1];
     if (!inb(nx, ny) || !built(S, nx, ny) || fontAt(S, nx, ny) >= 0) break;
+    if (wallBlocks(S, x, y, nx, ny)) break;
     const o = unitAt(S, nx, ny);
+    if (o && kind === 'dahlia') break;
     if (o) {
       if (immune(S, o, u)) break;
       let best = null, bs = -99;
@@ -905,7 +1330,7 @@ function canAttackAny(S, u) { return u.st === 'board' && !has(S, u, 'rose') && !
 function canTarget(S, u, v) {
   if (v === u || v.st !== 'board') return false;
   if (has(S, v, 'gianmaria')) return false;
-  if (v.owner === u.owner && !(has(S, u, 'lilili') || has(S, v, 'lilili'))) return false;
+  if (v.owner === u.owner && !(has(S, u, 'lilili') || has(S, v, 'lilili') || has(S, v, 'sword'))) return false;
   return true;
 }
 function attackRange(S, u) {
@@ -916,27 +1341,43 @@ function attackRange(S, u) {
     const stars = boardUnits(S).filter(function (x) { return x.cid === 'littlestar'; }).length;
     if (stars > 0) { r = Math.max(r, stars); across = true; }
   }
+  if (keys.indexOf('present') >= 0) { r = Math.max(r, Math.floor(stat(S, u).a)); across = true; }
+  if (keys.indexOf('aisha') >= 0) r = Math.max(r, W, H);
   return { r: r, across: across };
 }
 function attackTargets(S, u) {
   if (!canAttackAny(S, u)) return [];
-  const out = [];
+  let out = [];
   const rg = attackRange(S, u);
-  DIRS.forEach(function (d) {
+  (has(S, u, 'kiran') ? DIRS8 : DIRS).forEach(function (d) {
+    let px = u.x, py = u.y;
     for (let i = 1; i <= rg.r; i++) {
       const x = u.x + d[0] * i, y = u.y + d[1] * i;
       if (!inb(x, y)) break;
+      if (wallBlocks(S, px, py, x, y)) break;
       if (i > 1 && !rg.across && !built(S, x, y)) break;
       const o = unitAt(S, x, y);
       if (o) { if (canTarget(S, u, o)) out.push({ t: 'unit', id: o.id }); break; }
       const f = fontAt(S, x, y);
       if (f >= 0) { if (f !== u.owner) out.push({ t: 'font', p: f }); break; }
+      px = x; py = y;
     }
   });
+  const known = function (v) { return out.some(function (t) { return t.t === 'unit' && t.id === v.id; }); };
   if (has(S, u, 'azrael')) {
     boardUnits(S, 1 - u.owner).forEach(function (v) {
-      if (canTarget(S, u, v) && !out.some(function (t) { return t.t === 'unit' && t.id === v.id; })) out.push({ t: 'unit', id: v.id, tele: true });
+      if (canTarget(S, u, v) && !known(v)) out.push({ t: 'unit', id: v.id, tele: true });
     });
+  }
+  if (has(S, u, 'leon')) {
+    boardUnits(S).forEach(function (v) {
+      if (canTarget(S, u, v) && !known(v)) out.push({ t: 'unit', id: v.id, far: true });
+    });
+  }
+  // Ivan: the chosen Acolyte may only attack Ivan while Ivan is on the field.
+  if (u.mustAtk) {
+    const iv = S.aco[u.mustAtk];
+    if (iv && iv.st === 'board' && has(S, iv, 'ivan')) out = out.filter(function (t) { return t.t === 'unit' && t.id === iv.id; });
   }
   return out;
 }
@@ -950,11 +1391,20 @@ function azraelCells(S, u, v) {
   });
   return out;
 }
+// Jasprit and Ishan can pool their Attack when they stand on the same Pathway.
+function comboPartner(S, u) {
+  if (!has(S, u, 'combo')) return null;
+  const here = pathIdAt(S, u.x, u.y); if (!here) return null;
+  return boardUnits(S, u.owner).find(function (v) { return v !== u && v.cid !== u.cid && has(S, v, 'combo') && pathIdAt(S, v.x, v.y) === here; }) || null;
+}
 
-function battle(S, atk, target) {
+function battle(S, atk, target, ctx) {
+  ctx = ctx || {};
+  const bonus = ctx.bonus || 0;
+  const lisaA = has(S, atk, 'lisa') ? 2 : 0;
   if (target.t === 'font') {
     const f = S.fonts[target.p], fs = fontStat(S, target.p);
-    const res = stat(S, atk).a - fs.d;
+    const res = stat(S, atk).a + bonus + lisaA - fs.d;
     log(S, aname(S, atk) + ' attacks ' + pname(S, target.p) + '\'s Font.');
     if (res > 0) {
       if (f.shroud) {
@@ -970,17 +1420,34 @@ function battle(S, atk, target) {
     checkEnd(S); return;
   }
   const def = S.aco[target.id];
-  let atkv = stat(S, atk).a;
+  if (has(S, atk, 'breakmend') && cd(def).tier !== 'apex' && !immune(S, def, atk)) {
+    const cell = freeAdjFont(S, atk.owner);
+    if (cell) {
+      log(S, aname(S, atk) + ' takes control of ' + aname(S, def) + '.');
+      def.owner = atk.owner; def.x = cell.x; def.y = cell.y;
+      checkEnd(S); return;
+    }
+  }
+  if (has(S, def, 'sword')) {
+    const ss = stat(S, def);
+    log(S, aname(S, atk) + ' strikes the Sword in the Lake.');
+    if (destroy(S, def, atk, {})) { atk.mods[0] += ss.m; atk.mods[1] += ss.a; atk.mods[2] += ss.d; log(S, aname(S, atk) + ' claims the Sword\'s stats.'); }
+    checkEnd(S); return;
+  }
+  let atkv = stat(S, atk).a + bonus + lisaA;
   if (has(S, def, 'dblAtk') && !immune(S, atk, def)) atkv *= 2;
-  const res = atkv - stat(S, def).d;
-  log(S, aname(S, atk) + ' (' + atkv + ' Atk) attacks ' + aname(S, def) + ' (' + stat(S, def).d + ' Def).');
+  const defv = stat(S, def).d - (has(S, def, 'lisa') ? 2 : 0);
+  const res = atkv - defv;
+  log(S, aname(S, atk) + ' (' + atkv + ' Atk) attacks ' + aname(S, def) + ' (' + defv + ' Def).');
   const kill = function (victim, killer) {
+    if (has(S, victim, 'yiorgos') && stat(S, killer).a > 1) { log(S, 'Yiorgos cannot be destroyed in battle by an Acolyte with more than 1 Attack.'); return; }
     const lili = killer && has(S, killer, 'lilili');
     const orig = cd(victim).stats;
     const ok = destroy(S, victim, killer, { to: lili ? 'lili' : 'elysium' });
     if (ok && killer) {
       if (lili) { killer.mods[1] += orig[1]; killer.mods[2] += orig[2]; log(S, 'Lilili absorbs +' + orig[1] + '/+' + orig[2] + '.'); }
       if (has(S, killer, 'lieke')) { killer.mods[1] -= 2; killer.mods[2] -= 1; log(S, 'Lieke weakens (-2 Atk, -1 Def).'); }
+      if (has(S, killer, 'olusegun')) { killer.mods[1] += 1; killer.mods[2] += 1; log(S, 'Olusegun grows (+1/+1).'); }
     }
   };
   const alexiOn = atk.alexi && !suppressed(S, atk);
@@ -990,42 +1457,145 @@ function battle(S, atk, target) {
   checkEnd(S);
 }
 
-function startAttack(S, atk, target) {
+function startAttack(S, atk, target, ctx) {
+  ctx = ctx || {};
   if (target.t === 'unit') {
     const def = S.aco[target.id];
-    const h5 = boardUnits(S, def.owner).find(function (h) { return h !== def && has(S, h, 'heaven5') && !S.fonts[def.owner].dead; });
-    if (h5 && def.owner !== atk.owner) {
-      pend(S, { kind: 'react5', player: def.owner, cont: 'react5', src: h5.id, atk: atk.id, target: def.id, prompt: '5th Heaven Above: swap ' + aname(S, def) + ' with your Font, which is attacked instead?' });
-      return;
+    if (def.owner !== atk.owner) {
+      if (!ctx.skipM) {
+        const mk = boardUnits(S, def.owner).find(function (h) { return h !== def && has(S, h, 'maika'); });
+        if (mk) {
+          pend(S, { kind: 'reactM', player: def.owner, cont: 'reactM', src: mk.id, atk: atk.id, target: def.id, bonus: ctx.bonus || 0, prompt: 'Maika: swap places with ' + aname(S, def) + ' so Maika is attacked instead?' });
+          return;
+        }
+      }
+      if (!fontsGone(S)) {
+        const h5 = boardUnits(S, def.owner).find(function (h) { return h !== def && has(S, h, 'heaven5') && !S.fonts[def.owner].dead; });
+        if (h5) {
+          pend(S, { kind: 'react5', player: def.owner, cont: 'react5', src: h5.id, atk: atk.id, target: def.id, bonus: ctx.bonus || 0, prompt: '5th Heaven Above: swap ' + aname(S, def) + ' with your Font, which is attacked instead?' });
+          return;
+        }
+      }
     }
   }
-  battle(S, atk, target);
+  battle(S, atk, target, ctx);
+}
+
+// ============================================================ FREE ACTIONS (no die needed)
+function cultSquare(S, p) {
+  const bu = boardUnits(S, p);
+  const c1 = bu.find(function (u) { return u.cid === 'cult1' && has(S, u, 'cult1'); }); if (!c1) return null;
+  const rest = ['cult2', 'cult3', 'cult4'].map(function (c) { return bu.find(function (u) { return u.cid === c; }); });
+  if (rest.some(function (o) { return !o; })) return null;
+  const all = [c1].concat(rest);
+  const xs = all.map(function (u) { return u.x; }), ys = all.map(function (u) { return u.y; });
+  if (Math.max.apply(null, xs) - Math.min.apply(null, xs) !== 1 || Math.max.apply(null, ys) - Math.min.apply(null, ys) !== 1) return null;
+  const keys = {}; all.forEach(function (u) { keys[u.x + ',' + u.y] = 1; });
+  if (Object.keys(keys).length !== 4) return null;
+  return all.map(function (u) { return u.id; });
+}
+function ffppPair(S, p) {
+  const bu = boardUnits(S, p);
+  const pr = bu.find(function (u) { return has(S, u, 'present'); }); if (!pr) return null;
+  const fs = bu.filter(function (u) { return has(S, u, 'future'); }), ps = bu.filter(function (u) { return has(S, u, 'past'); });
+  for (const f of fs) for (const q of ps) if (adj(f, q)) return { f: f.id, p: q.id, pr: pr.id };
+  return null;
+}
+function freeActions(S, p) {
+  const out = [];
+  if (S.pending || (S.phase !== 'act' && S.phase !== 'roll') || S.cur !== p) return out;
+  boardUnits(S, p).forEach(function (t) {
+    if (!has(S, t, 'tina')) return;
+    boardUnits(S).forEach(function (v) { if (v !== t && adj(t, v) && !immune(S, v, t)) out.push({ t: 'tina', u: t.id, target: v.id }); });
+  });
+  if (cultSquare(S, p)) out.push({ t: 'cult' });
+  if (ffppPair(S, p)) out.push({ t: 'ffpp' });
+  return out;
 }
 
 // ============================================================ TURN ACTIONS
 function tokById(S, id) { return S.tokens.find(function (t) { return t.id === id; }); }
 function unspent(S) { return S.tokens.filter(function (t) { return !t.spent; }); }
 
+function buildEndSteps(S, p) {
+  const st = [];
+  boardUnits(S, p).forEach(function (u) { if (has(S, u, 'rose')) st.push({ k: 'rose', id: u.id }); });
+  st.push({ k: 'own' });
+  boardUnits(S, p).forEach(function (u) { if (has(S, u, 'fallen')) st.push({ k: 'fallen', id: u.id }); });
+  boardUnits(S, p).forEach(function (u) { if (has(S, u, 'accretion')) st.push({ k: 'accretion', id: u.id }); });
+  return st;
+}
 function endTurn(S) {
-  const p = S.cur;
-  boardUnits(S, p).forEach(function (u) {
-    if (S.phase === 'over') return;
-    if (u.st === 'board' && has(S, u, 'rose')) {
+  S.endSt = { p: S.cur, steps: buildEndSteps(S, S.cur) };
+  runEnd(S);
+}
+// End-of-turn effects run one at a time, so a step that needs a choice can pause and resume.
+function runEnd(S) {
+  const E = S.endSt; if (!E) return;
+  while (E.steps.length && !S.pending && S.phase !== 'over') {
+    doEndStep(S, E.steps.shift(), E.p);
+    if (S.phase !== 'over' && !S.pending) checkEnd(S);
+  }
+  if (S.phase === 'over') { S.endSt = null; return; }
+  if (S.pending) return;
+  S.endSt = null;
+  S.cur = 1 - E.p; S.turnNo++;
+  startTurn(S);
+}
+function doEndStep(S, s, p) {
+  switch (s.k) {
+    case 'rose': {
+      const u = S.aco[s.id]; if (!u || u.st !== 'board' || !has(S, u, 'rose')) return;
       const here = u.dPath;
       boardUnits(S).forEach(function (v) {
         if (v !== u && v.st === 'board' && pathIdAt(S, v.x, v.y) === here && !immune(S, v, u)) { log(S, 'Rose\'s requiem claims ' + aname(S, v) + '.'); destroy(S, v, u, {}); }
       });
+      return;
     }
-  });
-  if (S.phase === 'over') return;
-  boardUnits(S, p).forEach(function (u) {
-    if ((u.abil === 'egg5' || u.abil === 'egg3') && !u.hatched && !suppressed(S, u)) {
-      u.eggT++; if (u.eggT >= 3) { u.hatched = true; log(S, aname(S, u) + ' hatches!'); }
+    case 'own': {
+      boardUnits(S, p).forEach(function (u) {
+        if (u.st !== 'board') return;
+        if ((u.abil === 'egg5' || u.abil === 'egg3') && !u.hatched && !suppressed(S, u)) {
+          u.eggT++; if (u.eggT >= 3) { u.hatched = true; log(S, aname(S, u) + ' hatches!'); }
+        }
+        if (has(S, u, 'veveve')) { u.mods[0] += 1; u.mods[1] += 1; u.mods[2] += 1; log(S, 'Veveve grows (+1/+1/+1).'); }
+        u.ot = (u.ot || 0) + 1;
+        if (has(S, u, 'talos') && u.ot >= 2) { log(S, 'Talos burns out.'); destroy(S, u, null, {}); }
+      });
+      const keep = [];
+      (S.omens || []).forEach(function (o) {
+        if (o.owner !== p) { keep.push(o); return; }
+        o.left--;
+        if (o.left > 0) { keep.push(o); return; }
+        const doomed = boardUnits(S).filter(function (u) { return u.dt; });
+        log(S, 'The Omen comes due: ' + doomed.length + ' Acolyte(s) fall.');
+        doomed.forEach(function (u) { u.dt = false; if (u.st === 'board') destroy(S, u, null, {}); });
+      });
+      S.omens = keep;
+      return;
     }
-  });
-  checkEnd(S); if (S.phase === 'over') return;
-  S.cur = 1 - S.cur; S.turnNo++;
-  startTurn(S);
+    case 'fallen': {
+      const f = S.aco[s.id]; if (!f || f.st !== 'board' || !has(S, f, 'fallen')) return;
+      const mine = boardUnits(S, f.owner);
+      if (mine.length <= 1) { log(S, 'The Fallen has nothing left to feed on and is destroyed.'); destroy(S, f, null, {}); return; }
+      pend(S, { kind: 'pickUnit', player: f.owner, src: f.id, cont: 'fallen', opts: mine.map(function (u) { return u.id; }), prompt: 'The Fallen: destroy one of your Acolytes (choose The Fallen itself to destroy it instead).' });
+      return;
+    }
+    case 'accretion': {
+      const u = S.aco[s.id]; if (!u || u.st !== 'board' || !has(S, u, 'accretion')) return;
+      const here = pathIdAt(S, u.x, u.y);
+      if (here) {
+        boardUnits(S).filter(function (v) { return v !== u && pathIdAt(S, v.x, v.y) === here && !adj(u, v) && !immune(S, v, u); }).forEach(function (v) {
+          const cell = DIRS.map(function (d) { return [u.x + d[0], u.y + d[1]]; }).find(function (c) { return inb(c[0], c[1]) && !unitAt(S, c[0], c[1]) && fontAt(S, c[0], c[1]) < 0; });
+          if (cell) { v.x = cell[0]; v.y = cell[1]; log(S, aname(S, v) + ' is dragged to the Accretion Asura.'); }
+        });
+      }
+      const opts = boardUnits(S).filter(function (v) { return v !== u && adj(u, v) && !has(S, v, 'gianmaria'); }).map(function (v) { return v.id; });
+      if (opts.length === 1) startAttack(S, u, { t: 'unit', id: opts[0] }, {});
+      else if (opts.length > 1) pend(S, { kind: 'pickUnit', player: u.owner, src: u.id, cont: 'accrete', opts: opts, prompt: 'The Accretion Asura must attack: choose an adjacent Acolyte.' });
+      return;
+    }
+  }
 }
 
 function maxRerolls(S) { return boardUnits(S, S.cur).filter(function (u) { return has(S, u, 'kanda'); }).length; }
@@ -1038,11 +1608,15 @@ function sacDie(S, p) {
 // Single entry point for every state change. Returns {ok, err}.
 function apply(S, act) {
   const bad = function (e) { return { ok: false, err: e }; };
-  if (S.phase === 'over' && act.t !== 'resign') return bad('Game over');
   if (S.phase === 'over') return bad('Game over');
   if (S.pending) {
     if (act.t !== 'resolve' && act.t !== 'resign') return bad('Resolve the pending choice first');
-    if (act.t === 'resolve') { const ok = resolvePending(S, act.choice || {}); S.rev++; return ok ? { ok: true } : bad('Invalid choice'); }
+    if (act.t === 'resolve') {
+      const ok = resolvePending(S, act.choice || {});
+      if (ok && !S.pending && S.endSt) runEnd(S);
+      S.rev++;
+      return ok ? { ok: true } : bad('Invalid choice');
+    }
   }
   const p = S.cur;
   switch (act.t) {
@@ -1061,7 +1635,10 @@ function apply(S, act) {
       });
       log(S, pname(S, p) + ' rolls: ' + faces.map(function (f) { return ({ D: 'Descend', M: 'Move', A: 'Attack' })[f]; }).join(', ') + '.');
       S.phase = 'act';
-      if (faces.filter(function (f) { return f === 'D'; }).length >= 3 && ownerHas(S, p, 'd20')) endGame(S, p, 'D20, Combat\'s Risk: three Descension results!');
+      if (faces.filter(function (f) { return f === 'D'; }).length >= 3 && ownerHas(S, p, 'd20')) { endGame(S, p, 'D20, Combat\'s Risk: three Descension results!'); break; }
+      if (['D', 'M', 'A'].every(function (f) { return faces.indexOf(f) >= 0; })) {
+        boardUnits(S, p).forEach(function (u) { if (has(S, u, 'oliver')) { u.mods[1] += 1; u.mods[2] += 1; log(S, 'Oliver beams: one of each result (+1/+1).'); } });
+      }
       break;
     }
     case 'reroll': {
@@ -1077,7 +1654,7 @@ function apply(S, act) {
       if (S.phase !== 'act') return bad('Not now');
       const t = tokById(S, act.tok); if (!t || t.spent || t.type !== 'D') return bad('Need an unused Descension result');
       if (descendOptions(S, p, t).indexOf(act.aco) < 0) return bad('That Acolyte cannot descend with this result');
-      if (!canPlace(S, p, act.place.vi, act.place.ax, act.place.ay)) return bad('Illegal Pathway placement');
+      if (!canPlace(S, p, act.place.vi, act.place.ax, act.place.ay, placementFree(S, act.aco))) return bad('Illegal Pathway placement');
       t.spent = true; S.dice[t.die].st = 'used';
       placeAcolyte(S, p, act.aco, act.place, { die: t.die });
       break;
@@ -1087,7 +1664,7 @@ function apply(S, act) {
       const ts = (act.toks || []).map(function (id) { return tokById(S, id); });
       if (ts.length !== 2 || ts[0] === ts[1] || ts.some(function (t) { return !t || t.spent || t.type === 'D'; }) || ts[0].type !== ts[1].type) return bad('Sacrifice needs two matching Attack or Movement results');
       const a = S.aco[act.aco]; if (!a || a.owner !== p || a.st !== 'pool' || cd(a).tier !== 'bronze') return bad('Pick a Bronze Acolyte');
-      if (!canPlace(S, p, act.place.vi, act.place.ax, act.place.ay)) return bad('Illegal Pathway placement');
+      if (!canPlace(S, p, act.place.vi, act.place.ax, act.place.ay, placementFree(S, act.aco))) return bad('Illegal Pathway placement');
       const cand = sacDie(S, p);
       if (!cand.length) return bad('No Bronze die left to sacrifice');
       const dieId = cand[Math.floor(Math.random() * cand.length)];
@@ -1099,20 +1676,22 @@ function apply(S, act) {
     case 'move': {
       if (S.phase !== 'act') return bad('Not now');
       const t = tokById(S, act.tok), u = S.aco[act.u];
-      if (!t || t.spent || t.type !== 'M' || !u || u.owner !== p || u.st !== 'board') return bad('Bad move');
+      if (!t || t.spent || t.type !== 'M' || !u || !commandable(S, p, u)) return bad('Bad move');
       if (t.only && t.only !== u.id) return bad('That result is reserved');
       const dest = moveDests(S, u).find(function (d) { return d.x === act.x && d.y === act.y; });
       if (!dest) return bad('Cannot move there');
       u.x = act.x; u.y = act.y; useTok(S, t, u);
+      afterMove(S, u);
       break;
     }
     case 'fenrir': {
       if (S.phase !== 'act') return bad('Not now');
       const t = tokById(S, act.tok), u = S.aco[act.u];
-      if (!t || t.spent || t.type !== 'M' || !u || u.owner !== p) return bad('Bad move');
+      if (!t || t.spent || t.type !== 'M' || !u || !commandable(S, p, u)) return bad('Bad move');
       if (t.only && t.only !== u.id) return bad('Reserved');
       if (!fenrirRuns(S, u).some(function (r) { return r.dir === act.dir; })) return bad('Cannot slide that way');
       doFenrir(S, u, act.dir); useTok(S, t, u); checkEnd(S);
+      afterMove(S, u);
       break;
     }
     case 'attack': {
@@ -1122,13 +1701,50 @@ function apply(S, act) {
       if (t.only && t.only !== u.id) return bad('That result is reserved');
       const tg = attackTargets(S, u).find(function (x) { return x.t === act.target.t && (x.t === 'font' ? x.p === act.target.p : x.id === act.target.id); });
       if (!tg) return bad('Illegal target');
+      let bonus = 0, t2 = null;
+      if (act.combo) {
+        t2 = tokById(S, act.tok2); const pr = comboPartner(S, u);
+        if (!pr || !t2 || t2 === t || t2.spent || t2.type !== 'A' || (t2.only && t2.only !== u.id)) return bad('A combo needs a partner on the same Pathway and a second Attack result');
+        bonus = stat(S, pr).a;
+      }
       if (tg.tele) {
         const v = S.aco[tg.id];
         if (!act.cell || !azraelCells(S, u, v).some(function (c) { return c[0] === act.cell[0] && c[1] === act.cell[1]; })) return bad('Azrael needs a landing square');
         u.x = act.cell[0]; u.y = act.cell[1];
       }
       useTok(S, t, u);
-      startAttack(S, u, act.target);
+      if (t2) { t2.spent = true; log(S, aname(S, u) + ' combines Attack results (+' + bonus + ').'); }
+      startAttack(S, u, act.target, { bonus: bonus });
+      break;
+    }
+    case 'tina': {
+      if (S.phase !== 'act' && S.phase !== 'roll') return bad('Not now');
+      const t = S.aco[act.u], v = S.aco[act.target];
+      if (!t || t.owner !== p || t.st !== 'board' || !has(S, t, 'tina')) return bad('Tina cannot do that');
+      if (!v || v === t || v.st !== 'board' || !adj(t, v) || immune(S, v, t)) return bad('Tina needs an adjacent Acolyte');
+      log(S, 'Tina sacrifices herself to destroy ' + aname(S, v) + '.');
+      destroy(S, v, t, {}); destroy(S, t, null, { noSonia: true, noRevive: true }); checkEnd(S);
+      break;
+    }
+    case 'cult': {
+      if (S.phase !== 'act' && S.phase !== 'roll') return bad('Not now');
+      const ids = cultSquare(S, p); if (!ids) return bad('The Cult is not gathered in a 2x2 square');
+      const c1 = S.aco[ids[0]];
+      ids.slice(1).forEach(function (id) {
+        const o = S.aco[id], s = stat(S, o);
+        c1.mods[0] += s.m; c1.mods[1] += s.a; c1.mods[2] += s.d;
+        destroy(S, o, null, { noSonia: true, noRevive: true });
+      });
+      log(S, 'The Cult is sacrificed to Cult 1!');
+      break;
+    }
+    case 'ffpp': {
+      if (S.phase !== 'act' && S.phase !== 'roll') return bad('Not now');
+      const pr = ffppPair(S, p); if (!pr) return bad('Needs the Future\'s Fortune and the Past\'s Portway side by side, and a Passing Present');
+      const f = S.aco[pr.f], q = S.aco[pr.p], tgt = S.aco[pr.pr];
+      [f, q].forEach(function (o) { const s = stat(S, o); tgt.mods[0] += s.m; tgt.mods[1] += s.a; tgt.mods[2] += s.d; });
+      destroy(S, f, null, { noSonia: true, noRevive: true }); destroy(S, q, null, { noSonia: true, noRevive: true });
+      log(S, 'Future and Past give themselves to the Passing Present.');
       break;
     }
     case 'end': {
@@ -1158,7 +1774,8 @@ function dist(ax, ay, bx, by) { return Math.abs(ax - bx) + Math.abs(ay - by); }
 function abilityValue(S, u) {
   const k = ab(S, u);
   if (!k.length) return 0;
-  const bonus = { seojun: 2, andromeda: 3, lilili: 1.5, gogmagog: 2.5, iliman: 1.5, emiliano: 2, kanda: 1.5, maverick: 2, gwaaganad: 1, sonia: 1.5, gianmaria: 2, clarissa: 2.5, fenrir: 2, azrael: 2.5, dusan: 1, alicia: 1.5, caoimhin: 0.8, tim: 0.5, disObs: 1, rose: 0.5, heaven5: 1 };
+  const bonus = { seojun: 2, andromeda: 3, lilili: 1.5, gogmagog: 2.5, iliman: 1.5, emiliano: 2, kanda: 1.5, maverick: 2, gwaaganad: 1, sonia: 1.5, gianmaria: 2, clarissa: 2.5, fenrir: 2, azrael: 2.5, dusan: 1, alicia: 1.5, caoimhin: 0.8, tim: 0.5, disObs: 1, rose: 0.5, heaven5: 1,
+    present: 3, leon: 2.5, aisha: 2, kiran: 1.5, dahlia: 2, talia: 3, breakmend: 3, asura: 1, naomie: 2, vanessa: 2, yiorgos: 2, maika: 1, heaven9: 1, gambler: 1, hien: 0.5, vangelis: 0.5, accretion: 1.5, huimin: 1, alara: 1, ayaan: 1.5, deepti: 1, richa: 1, bigbear: 1, guy: 0.8, stefan: 0.8, lisa: 0.5, olusegun: 1, veveve: 1.5, fallen: -2, talos: -3, defaced: 0 };
   let v = 0.5; k.forEach(function (x) { v += bonus[x] || 0.3; }); return v;
 }
 function evalState(S, me) {
@@ -1209,6 +1826,7 @@ function aiDiceChoice(S) {
 function aiPending(S) {
   const P = S.pending, me = P.player;
   const best = function (ids, scoreFn) { let b = null, bs = -1e9; ids.forEach(function (id) { const s = scoreFn(id) + Math.random() * 0.01; if (s > bs) { bs = s; b = id; } }); return b; };
+  const sv = function (id) { const s = stat(S, S.aco[id]); return s.a + s.d; };
   switch (P.cont) {
     case 'eun': return { id: best(P.opts, function (id) { return abilityValue(S, S.aco[id]) + (S.aco[id].abil === 'caoimhin' ? 2 : 0); }) };
     case 'mutya': return { id: best(P.opts, function (id) { const a = S.aco[id]; return abilityValue(S, { abil: a.abil, st: 'board', zoa: null, owner: me, x: 0, y: 0, cid: a.cid, mods: [0, 0, 0] }); }) };
@@ -1225,16 +1843,82 @@ function aiPending(S) {
     }
     case 'react5': {
       const def = S.aco[P.target], atk = S.aco[P.atk];
-      const res = stat(S, atk).a - stat(S, def).d;
-      const fres = stat(S, atk).a - fontStat(S, me).d;
+      const res = stat(S, atk).a + (P.bonus || 0) - stat(S, def).d;
+      const fres = stat(S, atk).a + (P.bonus || 0) - fontStat(S, me).d;
       return { yes: res > 0 && fres <= 0 };
     }
+    case 'reactM': {
+      const def = S.aco[P.target], atk = S.aco[P.atk];
+      return { yes: stat(S, atk).a + (P.bonus || 0) - stat(S, def).d > 0 };
+    }
+    case 'clay': case 'ali': return { id: best(P.opts, sv) };
+    case 'ivan': return { id: best(P.opts, function (id) { return stat(S, S.aco[id]).a; }) };
+    case 'harry': return { id: best(P.opts, function (id) { return stat(S, S.aco[id]).m + 0.1 * sv(id); }) };
+    case 'mata': { const f = S.fonts[me]; return { id: best(P.opts, function (id) { return -dist(S.aco[id].x, S.aco[id].y, f.x, f.y); }) }; }
+    case 'whack': return { skip: true };
+    case 'anjali': return { id: best(P.opts, function (id) { return -sv(id); }) };
+    case 'mylene': return { id: best(P.opts, function (id) {
+      const u = S.aco[id], s = stat(S, u), b = cd(u).stats, diff = (s.a - b[1]) + (s.d - b[2]) + (s.m - b[0]);
+      return u.owner === me ? -diff : diff; }) };
+    case 'meng': return { id: best(P.opts, function (id) { return S.aco[id].owner === me ? sv(id) : stat(S, S.aco[id]).a * 2 - 3; }) };
+    case 'mengOpt': return { v: S.aco[P.target].owner === me ? 'd2a' : 'a2d' };
+    case 'chalice': return { id: best(P.opts, sv) };
+    case 'chaliceOpt': {
+      const ids = P.opts.filter(function (o) { return o.v !== ''; });
+      const b = best(ids.map(function (o) { return o.v; }), function (v) { return (v.indexOf('A') >= 0 ? 1 : 0) + (v.indexOf('D') >= 0 ? 1 : 0) - (v.indexOf('M') >= 0 ? 0.5 : 0); });
+      return { v: b === null ? '' : b };
+    }
+    case 'sacrilege': {
+      const a = S.aco[P.src], pid = pathIdAt(S, a.x, a.y);
+      let bn = 1, bs = -1e9;
+      for (let n = 1; n <= 3; n++) {
+        let sc = 0;
+        boardUnits(S).forEach(function (u) {
+          if (u === a || !pid || pathIdAt(S, u.x, u.y) !== pid) return;
+          const s = stat(S, u), loss = Math.min(n, s.a) + Math.min(n, s.d);
+          sc += (u.owner === me ? -1 : 1) * loss;
+        });
+        if (sc > bs) { bs = sc; bn = n; }
+      }
+      return { v: String(bn) };
+    }
+    case 'labCell': {
+      const f = S.fonts[me];
+      const near = P.opts.filter(function (c) { return dist(c[0], c[1], f.x, f.y) === 1; });
+      const pool = near.length ? near : P.opts;
+      return { cell: pool[Math.floor(Math.random() * pool.length)] };
+    }
+    case 'labSide': {
+      const c = P.cell, f = S.fonts[me];
+      const di = DIRS.findIndex(function (d) { return c[0] + d[0] === f.x && c[1] + d[1] === f.y; });
+      return { v: String(di >= 0 ? di : Math.floor(Math.random() * 4)) };
+    }
+    case 'fallen': return { id: best(P.opts, function (id) { return id === P.src ? -1000 : -sv(id); }) };
+    case 'accrete': {
+      const a = S.aco[P.src];
+      return { id: best(P.opts, function (id) {
+        const v = S.aco[id]; if (v.owner === a.owner) return -100;
+        const res = stat(S, a).a - stat(S, v).d;
+        return res > 0 ? sv(id) + 5 : (res < 0 ? -50 : 0); }) };
+    }
+    case 'alara': {
+      const u = S.aco[P.unit], of = S.fonts[1 - me], cur = dist(u.x, u.y, of.x, of.y);
+      let b = null, bs = cur - 1.5;
+      P.opts.forEach(function (c) { const s = dist(c[0], c[1], of.x, of.y); if (s < bs) { bs = s; b = c; } });
+      return b ? { cell: b } : { skip: true };
+    }
   }
-  return {};
+  // Safety net: always return something legal.
+  if (P.optional) return { skip: true };
+  const o = P.opts && P.opts[0];
+  if (o === undefined) return {};
+  if (Array.isArray(o)) return { cell: o };
+  if (typeof o === 'object') return { v: o.v };
+  return { id: o };
 }
 
-function aiPlacementsFor(S, p, limit) {
-  const pls = placements(S, p), of = S.fonts[1 - p];
+function aiPlacementsFor(S, p, limit, free) {
+  const pls = placements(S, p, undefined, free), of = S.fonts[1 - p];
   const scored = pls.map(function (pl) {
     const cs = cellsOf(VARIANTS[pl.vi], pl.ax, pl.ay);
     let best = 99; cs.forEach(function (c) { best = Math.min(best, dist(c[0], c[1], of.x, of.y)); });
@@ -1247,20 +1931,21 @@ function aiPlacementsFor(S, p, limit) {
 function aiCandidates(S) {
   const p = S.cur, out = [];
   const toks = unspent(S);
+  const cache = {};
+  const plsFor = function (free, n) { const k = (free ? 1 : 0) + ':' + n; if (!cache[k]) cache[k] = aiPlacementsFor(S, p, n, free); return cache[k]; };
   toks.filter(function (t) { return t.type === 'D'; }).forEach(function (t) {
     const opts = descendOptions(S, p, t);
     const seenC = {};
-    const pls = aiPlacementsFor(S, p, 7);
     opts.forEach(function (aid) {
       const cid = S.aco[aid].cid; if (seenC[cid]) return; seenC[cid] = 1;
-      pls.forEach(function (pl) { out.push({ t: 'descend', tok: t.id, aco: aid, place: pl }); });
+      plsFor(placementFree(S, aid), 7).forEach(function (pl) { out.push({ t: 'descend', tok: t.id, aco: aid, place: pl }); });
     });
   });
   ['M', 'A'].forEach(function (ty) {
     const pair = toks.filter(function (t) { return t.type === ty; });
     if (pair.length >= 2 && sacDie(S, p).length) {
       const bronze = S.pl[p].acos.filter(function (id) { return S.aco[id].st === 'pool' && cd(S.aco[id]).tier === 'bronze'; });
-      const seenC = {}; const pls = aiPlacementsFor(S, p, 5);
+      const seenC = {}; const pls = plsFor(false, 5);
       bronze.forEach(function (aid) {
         const cid = S.aco[aid].cid; if (seenC[cid]) return; seenC[cid] = 1;
         pls.forEach(function (pl) { out.push({ t: 'sac', toks: [pair[0].id, pair[1].id], aco: aid, place: pl, sacPenalty: 1.2 }); });
@@ -1269,21 +1954,33 @@ function aiCandidates(S) {
   });
   const units = boardUnits(S, p);
   const mTok = toks.filter(function (t) { return t.type === 'M'; }), aTok = toks.filter(function (t) { return t.type === 'A'; });
-  units.forEach(function (u) {
+  const movers = units.slice();
+  if (ownerHas(S, p, 'talia')) boardUnits(S, 1 - p).forEach(function (u) { movers.push(u); });
+  movers.forEach(function (u) {
     const mt = mTok.find(function (t) { return t.only === u.id; }) || mTok.find(function (t) { return !t.only; });
     if (mt) {
       moveDests(S, u).forEach(function (d) { out.push({ t: 'move', tok: mt.id, u: u.id, x: d.x, y: d.y }); });
       fenrirRuns(S, u).forEach(function (r) { out.push({ t: 'fenrir', tok: mt.id, u: u.id, dir: r.dir }); });
     }
+  });
+  units.forEach(function (u) {
     const at = aTok.find(function (t) { return t.only === u.id; }) || aTok.find(function (t) { return !t.only; });
-    if (at) {
-      attackTargets(S, u).forEach(function (tg) {
-        if (tg.tele) {
-          const v = S.aco[tg.id];
-          azraelCells(S, u, v).forEach(function (c) { out.push({ t: 'attack', tok: at.id, u: u.id, target: { t: 'unit', id: tg.id }, cell: c }); });
-        } else out.push({ t: 'attack', tok: at.id, u: u.id, target: tg.t === 'font' ? { t: 'font', p: tg.p } : { t: 'unit', id: tg.id } });
-      });
-    }
+    if (!at) return;
+    const at2 = comboPartner(S, u) ? aTok.find(function (t) { return t !== at && (!t.only || t.only === u.id); }) : null;
+    attackTargets(S, u).forEach(function (tg) {
+      if (tg.tele) {
+        const v = S.aco[tg.id];
+        azraelCells(S, u, v).forEach(function (c) { out.push({ t: 'attack', tok: at.id, u: u.id, target: { t: 'unit', id: tg.id }, cell: c }); });
+      } else {
+        const target = tg.t === 'font' ? { t: 'font', p: tg.p } : { t: 'unit', id: tg.id };
+        out.push({ t: 'attack', tok: at.id, u: u.id, target: target });
+        if (at2) out.push({ t: 'attack', tok: at.id, tok2: at2.id, combo: true, u: u.id, target: target });
+      }
+    });
+  });
+  freeActions(S, p).forEach(function (f) {
+    if (f.t === 'tina' && S.aco[f.target].owner === p) return;
+    out.push(f);
   });
   return out;
 }
@@ -1324,7 +2021,9 @@ root.Deign = {
   placements: placements, canPlace: canPlace, cellsOf: cellsOf, moveDests: moveDests, fenrirRuns: fenrirRuns,
   attackTargets: attackTargets, azraelCells: azraelCells, locked: locked, suppressed: suppressed, maxRerolls: maxRerolls,
   aiNext: aiNext, aiDiceChoice: aiDiceChoice, evalState: evalState, light: light, pathIdAt: pathIdAt, built: built,
-  aname: aname, attackRange: attackRange, sacDie: sacDie
+  aname: aname, attackRange: attackRange, sacDie: sacDie,
+  placementFree: placementFree, commandable: commandable, fogged: fogged, freeActions: freeActions, comboPartner: comboPartner,
+  cultSquare: cultSquare, ffppPair: ffppPair, wallBlocks: wallBlocks, fontsGone: fontsGone
 };
 if (typeof module !== 'undefined' && module.exports) module.exports = root.Deign;
 })(typeof window !== 'undefined' ? window : globalThis);
@@ -1349,14 +2048,14 @@ let setupMode = 'ai';        // ai | create | join
 let myName = store.get('deign.name') || '';
 let myPool = poolFromPreset(0);
 let oppChoice = 'random';
-let builder = { open: false, counts: {}, rainbow: -1 };
+let builder = { open: false, counts: {}, rainbow: -1, q: '' };
 let S = null, me = 0, mode = 'ai';
 let net = null, dbApi = null, uid = null;
 let fbError = '';
 let joinCode = '';
 let setupErr = '';
 let HL = null;
-const UI = { sel: null, flow: null, azr: null, rollSel: [], rollFor: -1, insp: null, confirmResign: false, poolView: null };
+const UI = { sel: null, flow: null, azr: null, combo: false, rollSel: [], rollFor: -1, insp: null, confirmResign: false, poolView: null };
 let aiTimer = null, toastTimer = null;
 
 function poolFromPreset(i) { const p = D.POOLS[i]; return { cards: p.cards.slice(), rainbow: -1, label: p.name }; }
@@ -1365,7 +2064,7 @@ function toast(msg) {
   const t = document.getElementById('toast'); t.textContent = msg; t.hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 2600);
 }
-const ABBR = { disObs: 'Wind', lightning: 'Ltng', fire: 'Fire', heaven10: '10th', heaven5: '5th', heaven14: '14th', heaven23: '23rd', heaven41: '41st', d20: 'D20', littlestar: 'Star', eggVile: 'Egg', basilisk: 'Basi', alexa: 'Lexa', alexi: 'Alxi', gianmaria: 'GMar', gianluca: 'GLuc', eunkyung: 'Eun', seojun: 'Seo', caoimhin: 'Caoi', cormoran: 'Corm', albie: 'Albi', azrael: 'Azra', andromeda: 'Andr', antoine: 'Antn', alicia: 'Alic', akuol: 'Akuo', kai: 'Kai', kaoru: 'Kaor' };
+const ABBR = { disObs: 'Wind', lightning: 'Ltng', fire: 'Fire', heaven10: '10th', heaven5: '5th', heaven14: '14th', heaven23: '23rd', heaven41: '41st', d20: 'D20', littlestar: 'Star', eggVile: 'Egg', basilisk: 'Basi', alexa: 'Lexa', alexi: 'Alxi', gianmaria: 'GMar', gianluca: 'GLuc', eunkyung: 'Eun', seojun: 'Seo', caoimhin: 'Caoi', cormoran: 'Corm', albie: 'Albi', azrael: 'Azra', andromeda: 'Andr', antoine: 'Antn', alicia: 'Alic', akuol: 'Akuo', kai: 'Kai', kaoru: 'Kaor', basilisk: 'Lami', dfe: 'DFin', liekeR: 'LieR', lieke: 'Lie', cult1: 'Cu1', cult2: 'Cu2', cult3: 'Cu3', cult4: 'Cu4', bigbear: 'BBr', bigbearbaby: 'BBby', embrace1: '1stE', embrace2: '2ndE', embrace3: '3rdE', heaven9: '9th', breakmend: 'BrkM', asura: 'Abso', accretion: 'Accr', theend: 'End', mystery: 'Myst', present: 'Pres', past: 'Past', future: 'Futr', sacrilege: 'Sacr', shroud: 'Shrd', whack: 'Whak', meng: 'Mèng', chalice: 'Chal', clay: 'Clay', trex: 'TRex', gambler: 'Gamb', defaced: 'Defa', omen: 'Omen', sword: 'Swrd', jasprit: 'Jasp', ishan: 'Isha', maika: 'Maik', mata: 'Mata', lisa: 'Lisa', lester: 'Lest', olusegun: 'Olus', oliver: 'Oliv', olwyn: 'Olwy' };
 function abbr(cid) { if (ABBR[cid]) return ABBR[cid]; return D.CARDS[cid].name.replace(/^The /, '').split(/[ ,]/)[0].slice(0, 4); }
 const fmt = function (n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); };
 const ICON = {
@@ -1459,16 +2158,28 @@ function builderHtml() {
   Object.keys(cnt).forEach(function (k) { for (let i = 0; i < cnt[k]; i++) cards.push(k); });
   const err = total === 10 ? D.validatePool(cards) : null;
   const ids = Object.keys(D.CARDS);
+  const q = (builder.q || '').trim().toLowerCase();
   let rows = '';
   D.TIER_ORDER.forEach(function (t) {
-    rows += '<div class="tierhead eyebrow t-' + t + '">' + TIER_NAME[t] + ' · ' + (t === 'apex' ? 'max 1 each' : 'max 3 each') + '</div>';
-    ids.filter(function (id) { return D.CARDS[id].tier === t; }).forEach(function (id) {
+    const list = ids.filter(function (id) {
+      const c = D.CARDS[id];
+      if (c.tier !== t) return false;
+      return !q || (c.name + ' ' + c.text + ' ' + c.sub).toLowerCase().indexOf(q) >= 0;
+    });
+    if (!list.length) return;
+    rows += '<div class="tierhead eyebrow t-' + t + '">' + TIER_NAME[t] + ' · ' + list.length + ' Acolytes · ' + (t === 'apex' ? 'max 1 each' : 'max 3 each') + '</div>';
+    list.forEach(function (id) {
       const c = D.CARDS[id], n = cnt[id] || 0, star = c.tags.indexOf('star') >= 0, lim = star ? 10 : (t === 'apex' ? 1 : 3);
-      rows += '<div class="crow"><div class="nm"><span class="t-' + t + '">' + esc(c.name) + '</span><small class="mono">' + c.stats.join('/') + '</small><small>' + esc(c.text || 'No effect.') + '</small></div><div class="qty"><button data-act="bqty" data-id="' + id + '" data-d="-1" ' + (n <= 0 ? 'disabled' : '') + ' aria-label="Remove one">−</button><span class="mono" style="min-width:16px;text-align:center">' + n + '</span><button data-act="bqty" data-id="' + id + '" data-d="1" ' + (n >= lim || total >= 10 ? 'disabled' : '') + ' aria-label="Add one">+</button></div></div>';
+      rows += '<div class="crow"><div class="nm"><span class="t-' + t + '">' + esc(c.name) + '</span><small class="mono">' + c.stats.join('/') + '</small><small>' + esc(c.text || 'No effect.') + '</small></div><div class="qty"><button data-act="bqty" data-id="' + id + '" data-d="-1" ' + (n <= 0 ? 'disabled' : '') + ' aria-label="Remove one ' + esc(c.name) + '">−</button><span class="mono" style="min-width:16px;text-align:center">' + n + '</span><button data-act="bqty" data-id="' + id + '" data-d="1" ' + (n >= lim || total >= 10 ? 'disabled' : '') + ' aria-label="Add one ' + esc(c.name) + '">+</button></div></div>';
     });
   });
+  if (!rows) rows = '<p class="tip" style="padding:10px">No Acolyte matches that search.</p>';
+  const picked = groupCards(cards).map(function (x) { return chipHtml(x.cid, x.n, '', 'data-act="bqty" data-id="' + x.cid + '" data-d="-1" title="Remove one"'); }).join('');
   const rb = cards.map(function (c, i) { return '<option value="' + i + '"' + (builder.rainbow === i ? ' selected' : '') + '>' + esc(D.CARDS[c].name.split(',')[0]) + ' (' + (i + 1) + ')</option>'; }).join('');
-  return '<div class="panel"><div class="row" style="justify-content:space-between"><h3>Build your pool</h3><span class="mono">' + total + ' / 10</span></div><div class="catalog">' + rows + '</div>' +
+  return '<div class="panel"><div class="row" style="justify-content:space-between"><h3>Build your pool</h3><span class="mono">' + total + ' / 10</span></div>' +
+    '<div class="chips" style="min-height:34px">' + (picked || '<span class="tip">Pick 10 Acolytes below. Tap a chip here to remove one.</span>') + '</div>' +
+    '<div class="field"><label for="bsearch">Search all ' + ids.length + ' Acolytes</label><input id="bsearch" data-input="bsearch" value="' + esc(builder.q || '') + '" placeholder="Name or effect, e.g. Zoa, destroy, Elysium" autocomplete="off"></div>' +
+    '<div class="catalog">' + rows + '</div>' +
     '<div class="field"><label for="rbsel">Rainbow die (optional)</label><select id="rbsel" data-change="rainbow"><option value="-1">None</option>' + rb + '</select></div>' +
     (err ? '<div class="err">' + esc(err) + '</div>' : '') +
     '<div class="row"><button class="btn primary" data-act="useBuilder" ' + (total === 10 && !err ? '' : 'disabled') + '>Use this pool</button><button class="btn quiet" data-act="closeBuilder">Cancel</button></div></div>';
@@ -1508,17 +2219,19 @@ function pickTok(type, unitId) {
 }
 function validAnchors(f) { const m = {}; f.valid.forEach(function (p) { if (D.VARIANTS[p.vi].shape === f.shape) m[p.ay * W + p.ax] = 1; }); return m; }
 function computeHL() {
-  const h = { mv: {}, at: {}, pk: {}, pkPath: {}, plok: {}, plbad: {}, anc: {}, land: {} };
+  const h = { mv: {}, at: {}, pk: {}, pkPath: {}, pkCell: {}, plok: {}, plbad: {}, anc: {}, land: {} };
   if (!S || S.phase === 'over' || !myTurnNow()) return h;
   const P = S.pending;
   if (P) {
     if (P.kind === 'pickUnit') P.opts.forEach(function (id) { const u = S.aco[id]; if (u.st === 'board') h.pk[u.y * W + u.x] = id; });
     if (P.kind === 'pickPath') P.opts.forEach(function (pid) { S.paths[pid].cells.forEach(function (c) { h.pk[c[1] * W + c[0]] = pid; h.pkPath[c[1] * W + c[0]] = pid; }); });
+    if (P.kind === 'pickCell') P.opts.forEach(function (c) { h.pk[c[1] * W + c[0]] = 'cell'; h.pkCell[c[1] * W + c[0]] = true; });
+    if (P.cont === 'labSide' && P.cell) { h.pk[P.cell[1] * W + P.cell[0]] = 'cell'; }
   }
   if (UI.flow && UI.flow.stage === 'place') {
     const f = UI.flow; h.anc = validAnchors(f);
     if (f.anchor) {
-      const ok = D.canPlace(S, me, f.vi, f.anchor[0], f.anchor[1]);
+      const ok = D.canPlace(S, me, f.vi, f.anchor[0], f.anchor[1], f.free);
       D.cellsOf(D.VARIANTS[f.vi], f.anchor[0], f.anchor[1]).forEach(function (c) { if (c[0] >= 0 && c[1] >= 0 && c[0] < W && c[1] < H) h[ok ? 'plok' : 'plbad'][c[1] * W + c[0]] = 1; });
       h.land[f.anchor[1] * W + f.anchor[0]] = 1;
     }
@@ -1531,12 +2244,12 @@ function computeHL() {
   }
   if (!P && S.phase === 'act' && UI.sel) {
     const u = S.aco[UI.sel];
-    if (u && u.st === 'board' && u.owner === me) {
+    if (u && u.st === 'board' && D.commandable(S, me, u)) {
       if (pickTok('M', u.id)) {
         D.moveDests(S, u).forEach(function (d) { h.mv[d.y * W + d.x] = {}; });
         D.fenrirRuns(S, u).forEach(function (r) { h.mv[r.y * W + r.x] = { dir: r.dir }; });
       }
-      if (pickTok('A', u.id)) {
+      if (u.owner === me && pickTok('A', u.id)) {
         D.attackTargets(S, u).forEach(function (t) {
           if (t.t === 'font') { const f = S.fonts[t.p]; h.at[f.y * W + f.x] = t; }
           else { const v = S.aco[t.id]; h.at[v.y * W + v.x] = t; }
@@ -1565,11 +2278,16 @@ function renderBoard() {
       cls += ' can';
       const e = D.stat(S, u), b = cardOf(u).stats;
       const sv = function (v, base) { return v > base ? '<span class="up">' + fmt(v) + '</span>' : (v < base ? '<span class="dn">' + fmt(v) + '</span>' : fmt(v)); };
-      inner = '<span class="unit ' + (u.owner === me ? 'me' : 'foe') + (UI.sel === u.id ? ' sel' : '') + '"><b>' + esc(abbr(u.cid)) + '</b><i>' + sv(e.m, b[0]) + '/' + sv(e.a, b[1]) + '/' + sv(e.d, b[2]) + '</i></span>';
+      if (u.owner !== me && D.fogged(S, u)) inner = '<span class="unit foe fog' + (UI.sel === u.id ? ' sel' : '') + '"><b>Fog</b><i>?/?/?</i></span>';
+      else inner = '<span class="unit ' + (u.owner === me ? 'me' : 'foe') + (UI.sel === u.id ? ' sel' : '') + '"><b>' + esc(abbr(u.cid)) + '</b><i>' + sv(e.m, b[0]) + '/' + sv(e.a, b[1]) + '/' + sv(e.d, b[2]) + '</i></span>';
     } else if (f >= 0) {
       const fs = D.fontStat(S, f);
       inner = '<span class="unit font ' + (f === me ? 'me' : 'foe') + '"><b>F</b><i>' + fmt(fs.m) + '/' + fmt(fs.a) + '/' + fmt(fs.d) + '</i></span>';
     }
+    // Labyrinth Maker walls: draw the wall on the right or lower edge of this square, as seen from this player's seat.
+    const rx = me === 1 ? x - 1 : x + 1, ry = y, dx2 = x, dy2 = me === 1 ? y - 1 : y + 1;
+    if (D.wallBlocks(S, x, y, rx, ry)) inner += '<span class="wall wR"></span>';
+    if (D.wallBlocks(S, x, y, dx2, dy2)) inner += '<span class="wall wD"></span>';
     h += '<button class="' + cls + '" data-act="cell" data-x="' + x + '" data-y="' + y + '" aria-label="Square ' + (x + 1) + ',' + (y + 1) + '">' + inner + '</button>';
   }
   return '<div class="boardwrap"><div class="board" style="grid-template-columns:repeat(' + W + ',minmax(0,1fr));grid-template-rows:repeat(' + H + ',minmax(0,1fr));aspect-ratio:' + W + ' / ' + H + '">' + h + '</div><div class="legend"><span style="--c:var(--me)">You</span><span style="--c:var(--foe)">Opponent</span><span style="--c:var(--ok)">Can move here</span><span style="--c:var(--bad)">Can attack</span></div></div>';
@@ -1605,6 +2323,17 @@ function statusBanner() {
   else msg = 'Select one of your Acolytes to move or attack, or spend a Descend result.';
   return '<div class="banner mine"><strong>Your turn</strong><span>' + esc(msg) + '</span></div>';
 }
+function freeBtns() {
+  const list = D.freeActions(S, me);
+  if (!list.length) return '';
+  return '<div class="row">' + list.map(function (f, i) {
+    let label = '';
+    if (f.t === 'tina') label = 'Tina sacrifices herself to destroy ' + D.aname(S, S.aco[f.target]);
+    else if (f.t === 'cult') label = 'Sacrifice Cult 2, 3 and 4 to Cult 1';
+    else label = 'Future and Past sacrifice themselves to the Passing Present';
+    return '<button class="btn sm" data-act="free" data-i="' + i + '">' + esc(label) + '</button>';
+  }).join('') + '</div>';
+}
 function controlsHtml() {
   if (!S || S.phase === 'over') return '';
   if (!myTurnNow()) {
@@ -1621,7 +2350,7 @@ function controlsHtml() {
       dice.map(function (id) {
         const d = S.dice[id], k = d.rainbow ? 'rainbow' : d.tier, a = S.aco[S.pl[me].acos[S.pl[me].dice.indexOf(id)]];
         return '<button class="die t-' + k + '" data-act="toggleDie" data-id="' + id + '" aria-pressed="' + (UI.rollSel.indexOf(id) >= 0) + '"><span>' + esc(abbr(a.cid)) + '</span><small>' + TIER_NAME[k] + '</small></button>';
-      }).join('') + '</div><div class="row"><button class="btn primary" data-act="roll" ' + (UI.rollSel.length ? '' : 'disabled') + '>Roll ' + UI.rollSel.length + ' ' + (UI.rollSel.length === 1 ? 'die' : 'dice') + '</button></div></div>';
+      }).join('') + '</div><div class="row"><button class="btn primary" data-act="roll" ' + (UI.rollSel.length ? '' : 'disabled') + '>Roll ' + UI.rollSel.length + ' ' + (UI.rollSel.length === 1 ? 'die' : 'dice') + '</button></div>' + freeBtns() + '</div>';
   }
   // act phase
   const unspent = D.unspent(S);
@@ -1635,15 +2364,29 @@ function controlsHtml() {
   let rer = '';
   if (S.rerolls < D.maxRerolls(S) && unspent.length) rer = '<div class="row"><span class="tip">Kanda lets you re-roll one die:</span>' + unspent.map(function (t) { return '<button class="btn sm" data-act="reroll" data-id="' + t.id + '">Re-roll ' + FACE_NAME[t.type] + '</button>'; }).join('') + '</div>';
   const none = !S.tokens.length ? '<p class="tip">You have no dice left to roll. End your turn.</p>' : '';
+  const fa = freeBtns();
+  let combo = '';
+  const selU = UI.sel ? S.aco[UI.sel] : null;
+  if (selU && selU.st === 'board' && selU.owner === me) {
+    const pr = D.comboPartner(S, selU), aT = unspent.filter(function (t) { return t.type === 'A'; });
+    if (pr && aT.length >= 2) combo = '<div class="row"><button class="btn sm" data-act="toggleCombo" aria-pressed="' + UI.combo + '">' + (UI.combo ? '✓ ' : '') + 'Combo with ' + esc(D.aname(S, pr)) + ': use 2 Attack results</button></div>';
+  }
   return '<div class="panel"><div class="eyebrow">Your results</div>' + (toks ? '<div class="toks">' + toks + '</div>' : '') + none +
     (unspent.some(function (t) { return t.type === 'D'; }) ? '<p class="tip">Tap a Descend result to bring an Acolyte onto the board.</p>' : '') +
     (unspent.some(function (t) { return t.type !== 'D'; }) ? '<p class="tip">Select an Acolyte on the board. Green dots are where it can move, red outlines are what it can attack.</p>' : '') +
-    (sac ? '<div class="row">' + sac + '</div>' : '') + rer +
+    (sac ? '<div class="row">' + sac + '</div>' : '') + rer + combo + fa +
     '<div class="row"><button class="btn primary" data-act="endTurn">End turn</button></div></div>';
 }
 function pendingHtml(P) {
   let body = '';
-  if (P.kind === 'pickUnit') body = '<p class="tip">Tap a highlighted Acolyte on the board.</p>';
+  const skipBtn = P.optional ? '<div class="row"><button class="btn" data-act="skipPending">Skip</button></div>' : '';
+  if (P.kind === 'pickUnit') body = '<p class="tip">Tap a highlighted Acolyte on the board.</p>' + skipBtn;
+  else if (P.kind === 'pickCell') body = '<p class="tip">Tap a highlighted square on the board.</p>' + skipBtn;
+  else if (P.kind === 'pickOpt') {
+    const flip = me === 1, sides = flip ? ['Left', 'Right', 'Up', 'Down'] : ['Right', 'Left', 'Down', 'Up'];
+    body = '<div class="row">' + P.opts.map(function (o) { return '<button class="btn" data-act="pickOpt" data-v="' + esc(o.v) + '">' + esc(P.cont === 'labSide' ? sides[Number(o.v)] : o.label) + '</button>'; }).join('') + '</div>';
+  }
+  else if (P.kind === 'reactM') body = '<div class="row"><button class="btn primary" data-act="react" data-yes="1">Swap with Maika</button><button class="btn" data-act="react" data-yes="0">Let it be attacked</button></div>';
   else if (P.kind === 'pickPath') body = '<p class="tip">Tap a highlighted Pathway on the board.</p>' + (P.optional ? '<div class="row"><button class="btn" data-act="skipPending">Skip</button></div>' : '');
   else if (P.kind === 'pickElysium') body = '<div class="list">' + P.opts.map(function (id) { const a = S.aco[id], c = cardOf(a); return '<button class="pickrow" data-act="pickEly" data-id="' + id + '"><span>' + esc(c.name) + '<small>' + esc(c.text) + '</small></span><span class="mono">' + c.stats.join('/') + '</span></button>'; }).join('') + '</div>';
   else if (P.kind === 'react5') body = '<div class="row"><button class="btn primary" data-act="react" data-yes="1">Swap with Font</button><button class="btn" data-act="react" data-yes="0">Let it be attacked</button></div>';
@@ -1661,13 +2404,13 @@ function flowHtml() {
     }).join('');
     return '<div class="panel"><div class="eyebrow">' + (f.kind === 'sac' ? 'Ritual Sacrifice: choose a Bronze Acolyte' : 'Descend which Acolyte?') + '</div><div class="list">' + (rows || '<p class="tip">No Acolyte of that colour left in your pool.</p>') + '</div><div class="row"><button class="btn quiet" data-act="cancelFlow">Cancel</button></div></div>';
   }
-  const placed = f.anchor && D.canPlace(S, me, f.vi, f.anchor[0], f.anchor[1]);
+  const placed = f.anchor && D.canPlace(S, me, f.vi, f.anchor[0], f.anchor[1], f.free);
   const name = f.aco ? esc(cardOf(S.aco[f.aco]).name) : 'Pathway';
   const thumbs = f.fixed ? '' : '<div class="shapes">' + f.shapes.map(function (si) {
     const vi = si === f.shape ? f.vi : D.VARIANTS.findIndex(function (v) { return v.shape === si; });
     return '<button class="shape" data-act="pickShape" data-i="' + si + '" aria-pressed="' + (si === f.shape) + '" aria-label="Pathway shape ' + (si + 1) + '">' + thumbHtml(vi) + '</button>';
   }).join('') + '</div>';
-  return '<div class="panel"><div class="eyebrow">Place ' + name + '</div>' + thumbs + '<p class="tip">' + (f.fixed ? '' : 'Pick a Pathway shape. ') + 'Dots show where the Acolyte (the gold square) can land. Rotate to try other orientations, or press R.</p>' +
+  return '<div class="panel"><div class="eyebrow">Place ' + name + '</div>' + thumbs + '<p class="tip">' + (f.free ? 'The Great Mystery: this Pathway can go anywhere there is open space. ' : '') + (f.fixed ? '' : 'Pick a Pathway shape. ') + 'Dots show where the Acolyte (the gold square) can land. Rotate to try other orientations, or press R.</p>' +
     '<div class="row"><button class="btn" data-act="rotate">Rotate / flip</button><button class="btn primary" data-act="confirmFlow" ' + (placed ? '' : 'disabled') + '>Descend here</button>' + (f.kind === 'yanPlace' ? '' : '<button class="btn quiet" data-act="cancelFlow">Cancel</button>') + '</div></div>';
 }
 function thumbHtml(vi) {
@@ -1686,13 +2429,14 @@ function infoHtml() {
     const chips = pl.acos.map(function (id) {
       const a = S.aco[id], st = a.st;
       const home = a.home === p;
-      const cls = st === 'board' ? 'on-board' : (st === 'elysium' ? 'gone' : (st === 'lili' ? 'lili' : ''));
-      return chipHtml(a.cid, 1, cls, 'data-act="inspect" data-id="' + id + '" title="' + esc(st === 'pool' ? 'In pool' : (st === 'board' ? 'On the board' : (st === 'lili' ? "In Lilili's Zone" : 'In Elysium'))) + '"');
+      const cls = st === 'board' ? 'on-board' : (st === 'elysium' ? 'gone' : (st === 'lili' ? 'lili' : (st === 'aside' ? 'lili' : '')));
+      if (p !== me && D.fogged(S, a)) return '<button class="chip t-apex on-board" data-act="inspect" data-id="' + id + '" title="On the board, hidden by fog"><span class="dot"></span><span style="color:var(--fg)">Fog of War token</span></button>';
+      return chipHtml(a.cid, 1, cls, 'data-act="inspect" data-id="' + id + '" title="' + esc(st === 'pool' ? 'In pool' : (st === 'board' ? 'On the board' : (st === 'lili' ? "In Lilili's Zone" : (st === 'aside' ? 'Set aside by Anjali' : 'In Elysium')))) + '"');
     }).join('');
     const left = D.poolDice(S, p).length;
     return '<div class="panel"><div class="row" style="justify-content:space-between"><h3><span class="sw ' + (p === me ? 'me' : 'foe') + '"></span> ' + esc(pl.name) + '</h3><span class="mono muted">' + left + ' dice left · Elysium ' + pl.elysium.length + '</span></div><div class="chips">' + chips + '</div></div>';
   }).join('');
-  const insp = UI.insp ? '<div class="panel">' + cardHtml(UI.insp.cid, UI.insp.aid) + '</div>' : '<div class="panel"><p class="tip">Tap any Acolyte on the board or in a pool to read its card.</p></div>';
+  const insp = UI.insp && UI.insp.fog ? '<div class="panel"><div class="cardbox"><div class="eyebrow">Fog of War token</div><h4>Hidden Acolyte</h4><p>Hien the Fog of War hides this player\'s Acolytes. Their name, stats and effects are not shown.</p></div></div>' : UI.insp ? '<div class="panel">' + cardHtml(UI.insp.cid, UI.insp.aid) + '</div>' : '<div class="panel"><p class="tip">Tap any Acolyte on the board or in a pool to read its card.</p></div>';
   const logs = '<div class="panel"><div class="eyebrow">Log</div><div class="log">' + S.log.slice().reverse().slice(0, 40).map(function (l) { return '<div>' + esc(l) + '</div>'; }).join('') + '</div></div>';
   return insp + lists + logs;
 }
@@ -1708,6 +2452,7 @@ function renderGame() {
 // ------------------------------------------------------------ main render
 function render() {
   const scroll = window.scrollY;
+  const cat = document.querySelector('.catalog'), catTop = cat ? cat.scrollTop : 0;
   const keep = document.activeElement && document.activeElement.id;
   let html = '';
   if (view === 'home') html = renderHome();
@@ -1719,6 +2464,7 @@ function render() {
     html = renderGame();
   }
   $app.innerHTML = html;
+  const cat2 = document.querySelector('.catalog'); if (cat2 && cat) cat2.scrollTop = catTop;
   if (keep) { const el = document.getElementById(keep); if (el && el.tagName === 'INPUT') { el.focus(); try { el.setSelectionRange(el.value.length, el.value.length); } catch (e) {} } }
   window.scrollTo(0, scroll);
 }
@@ -1726,11 +2472,12 @@ function render() {
 // ------------------------------------------------------------ flow (descend / sacrifice / Yan placement)
 function startFlow(kind, data) {
   const fixed = kind === 'yanPlace' ? S.pending.shape : undefined;
-  const valid = D.placements(S, me, fixed);
+  const free = !!(data && data.aco && D.placementFree(S, data.aco));
+  const valid = D.placements(S, me, fixed, free);
   if (!valid.length) { toast('There is nowhere legal to place that Pathway.'); UI.flow = null; return false; }
   const shapes = []; valid.forEach(function (p) { const s = D.VARIANTS[p.vi].shape; if (shapes.indexOf(s) < 0) shapes.push(s); });
   shapes.sort();
-  UI.flow = Object.assign({ kind: kind, valid: valid, shapes: shapes, shape: shapes[0], anchor: null, stage: 'place', fixed: fixed !== undefined }, data);
+  UI.flow = Object.assign({ kind: kind, valid: valid, shapes: shapes, shape: shapes[0], anchor: null, stage: 'place', fixed: fixed !== undefined, free: free }, data);
   setShape(shapes[0], true);
   return true;
 }
@@ -1739,15 +2486,15 @@ function setShape(si, quiet) {
   const f = UI.flow; if (!f) return;
   f.shape = si; f.vis = visFor(f, si);
   let vi = f.vis[0];
-  if (f.anchor) { const here = f.vis.filter(function (v) { return D.canPlace(S, me, v, f.anchor[0], f.anchor[1]); }); if (here.length) vi = here[0]; else f.anchor = null; }
+  if (f.anchor) { const here = f.vis.filter(function (v) { return D.canPlace(S, me, v, f.anchor[0], f.anchor[1], f.free); }); if (here.length) vi = here[0]; else f.anchor = null; }
   f.vi = vi;
   if (!quiet) render();
 }
 function flowClick(x, y) {
   const f = UI.flow; if (!f || f.stage !== 'place') return;
-  if (D.canPlace(S, me, f.vi, x, y)) f.anchor = [x, y];
+  if (D.canPlace(S, me, f.vi, x, y, f.free)) f.anchor = [x, y];
   else {
-    const alt = f.vis.find(function (v) { return D.canPlace(S, me, v, x, y); });
+    const alt = f.vis.find(function (v) { return D.canPlace(S, me, v, x, y, f.free); });
     if (alt !== undefined) { f.vi = alt; f.anchor = [x, y]; } else toast('That Pathway shape cannot land there. Try another shape or rotate it.');
   }
   render();
@@ -1755,7 +2502,7 @@ function flowClick(x, y) {
 function rotateFlow() {
   const f = UI.flow; if (!f) return;
   let pool = f.vis;
-  if (f.anchor) { const here = f.vis.filter(function (v) { return D.canPlace(S, me, v, f.anchor[0], f.anchor[1]); }); if (here.length) pool = here; }
+  if (f.anchor) { const here = f.vis.filter(function (v) { return D.canPlace(S, me, v, f.anchor[0], f.anchor[1], f.free); }); if (here.length) pool = here; }
   const i = pool.indexOf(f.vi);
   f.vi = pool[(i + 1) % pool.length];
   render();
@@ -1781,7 +2528,7 @@ function act(a) {
 }
 function afterApply(local) {
   if (UI.sel) { const u = S.aco[UI.sel]; if (!u || u.st !== 'board') UI.sel = null; }
-  UI.azr = null;
+  UI.azr = null; UI.combo = false;
   if (S.phase !== 'act' || S.pending) { if (S.pending && S.pending.player !== me) UI.flow = null; }
   render();
   if (mode === 'online' && local) queueWrite();
@@ -1790,12 +2537,13 @@ function afterApply(local) {
 function onCell(x, y) {
   if (!S) return;
   const u = D.unitAt(S, x, y);
-  if (u) UI.insp = { cid: u.cid, aid: u.id };
+  if (u) UI.insp = u.owner !== me && D.fogged(S, u) ? { fog: true } : { cid: u.cid, aid: u.id };
   if (!myTurnNow()) { render(); return; }
   const key = y * W + x, P = S.pending;
   if (P) {
     if (P.kind === 'pickUnit' && u && P.opts.indexOf(u.id) >= 0) return void act({ t: 'resolve', choice: { id: u.id } });
     if (P.kind === 'pickPath' && HL.pkPath[key]) return void act({ t: 'resolve', choice: { id: HL.pkPath[key] } });
+    if (P.kind === 'pickCell' && HL.pkCell[key]) return void act({ t: 'resolve', choice: { cell: [x, y] } });
     if (P.kind === 'placePath') return void flowClick(x, y);
     render(); return;
   }
@@ -1818,11 +2566,16 @@ function onCell(x, y) {
     if (HL.at[key]) {
       const tg = HL.at[key], tok = pickTok('A', sel.id);
       if (tg.tele) { UI.azr = { u: sel.id, id: tg.id }; render(); return; }
-      return void act({ t: 'attack', tok: tok.id, u: sel.id, target: tg.t === 'font' ? { t: 'font', p: tg.p } : { t: 'unit', id: tg.id } });
+      const target = tg.t === 'font' ? { t: 'font', p: tg.p } : { t: 'unit', id: tg.id };
+      if (UI.combo && D.comboPartner(S, sel)) {
+        const t2 = D.unspent(S).find(function (q) { return q.type === 'A' && q.id !== tok.id && (!q.only || q.only === sel.id); });
+        if (t2) return void act({ t: 'attack', tok: tok.id, tok2: t2.id, combo: true, u: sel.id, target: target });
+      }
+      return void act({ t: 'attack', tok: tok.id, u: sel.id, target: target });
     }
   }
-  if (u && u.owner === me && S.phase === 'act') UI.sel = UI.sel === u.id ? null : u.id;
-  else UI.sel = null;
+  if (u && D.commandable(S, me, u) && S.phase === 'act') { UI.sel = UI.sel === u.id ? null : u.id; UI.combo = false; }
+  else { UI.sel = null; UI.combo = false; }
   render();
 }
 
@@ -1853,7 +2606,7 @@ function startAI() {
 }
 function begin(game, seat, m) {
   S = game; me = seat; mode = m; view = 'game';
-  UI.sel = null; UI.flow = null; UI.azr = null; UI.rollFor = -1; UI.insp = null; UI.confirmResign = false;
+  UI.sel = null; UI.flow = null; UI.azr = null; UI.combo = false; UI.rollFor = -1; UI.insp = null; UI.confirmResign = false;
   render(); if (m === 'ai') schedAI();
   window.scrollTo(0, 0);
 }
@@ -1959,7 +2712,7 @@ document.addEventListener('click', function (ev) {
     case 'pickPool': { const i = Number(el.dataset.i); myPool = poolFromPreset(i); builder.open = false; UI.poolView = null; render(); break; }
     case 'poolInspect': UI.poolView = el.dataset.cid; render(); break;
     case 'openBuilder': {
-      builder.open = true; builder.counts = {}; myPool.cards.forEach(function (c) { builder.counts[c] = (builder.counts[c] || 0) + 1; }); builder.rainbow = -1; render(); break;
+      builder.open = true; builder.q = ''; builder.counts = {}; myPool.cards.forEach(function (c) { builder.counts[c] = (builder.counts[c] || 0) + 1; }); builder.rainbow = -1; render(); break;
     }
     case 'closeBuilder': builder.open = false; render(); break;
     case 'bqty': {
@@ -1984,7 +2737,7 @@ document.addEventListener('click', function (ev) {
     case 'leaveGame': store.del('deign.room'); toHome(); break;
     case 'again': if (UI.lastSetup) { begin(D.newGame({ names: UI.lastSetup.names, pools: UI.lastSetup.pools, ai: [false, true], first: Math.random() < 0.5 ? 0 : 1 }), 0, 'ai'); } break;
     case 'cell': onCell(Number(el.dataset.x), Number(el.dataset.y)); break;
-    case 'inspect': { const u = S.aco[id]; UI.insp = { cid: u.cid, aid: id }; render(); break; }
+    case 'inspect': { const u = S.aco[id]; UI.insp = u.owner !== me && D.fogged(S, u) ? { fog: true } : { cid: u.cid, aid: id }; render(); break; }
     case 'toggleDie': {
       const i = UI.rollSel.indexOf(id);
       if (i >= 0) UI.rollSel.splice(i, 1); else if (UI.rollSel.length < D.rollLimit(S)) UI.rollSel.push(id); else toast('You can roll at most ' + D.rollLimit(S) + ' dice.');
@@ -2016,6 +2769,9 @@ document.addEventListener('click', function (ev) {
     case 'skipPending': act({ t: 'resolve', choice: { skip: true } }); break;
     case 'pickEly': act({ t: 'resolve', choice: { id: id } }); break;
     case 'react': act({ t: 'resolve', choice: { yes: el.dataset.yes === '1' } }); break;
+    case 'pickOpt': act({ t: 'resolve', choice: { v: el.dataset.v } }); break;
+    case 'toggleCombo': UI.combo = !UI.combo; render(); break;
+    case 'free': { const fa = D.freeActions(S, me)[Number(el.dataset.i)]; if (fa) { UI.sel = null; act(fa); } break; }
     case 'resign': UI.confirmResign = true; render(); break;
     case 'resignNo': UI.confirmResign = false; render(); break;
     case 'resignYes': UI.confirmResign = false; act({ t: 'resign', p: me }); break;
@@ -2025,6 +2781,7 @@ document.addEventListener('input', function (ev) {
   const t = ev.target;
   if (t.dataset.input === 'name') { myName = t.value; store.set('deign.name', myName); }
   if (t.dataset.input === 'code') { joinCode = t.value.toUpperCase(); }
+  if (t.dataset.input === 'bsearch') { builder.q = t.value; render(); }
 });
 document.addEventListener('change', function (ev) {
   const t = ev.target;
@@ -2048,6 +2805,8 @@ const FIREBASE_CONFIG = {
   authDomain: "deign-3ce1c.firebaseapp.com",
   databaseURL: "https://deign-3ce1c-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "deign-3ce1c",
+  storageBucket: "deign-3ce1c.firebasestorage.app",
+  messagingSenderId: "683638153072",
   appId: "1:683638153072:web:4283c42149677f206579b5"
 };
 // Presents Firebase Realtime Database through the small doc()/get()/set()/update()/onSnapshot() surface the lobby code uses.
