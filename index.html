@@ -208,6 +208,9 @@ button.chip:hover { border-color: var(--accent); }
 .unit.fog { background: repeating-linear-gradient(135deg, var(--foe) 0 5px, color-mix(in srgb, var(--foe) 70%, #fff) 5px 10px); }
 .cell { overflow: visible; }
 .wall { position: absolute; background: var(--fg); pointer-events: none; z-index: 3; border-radius: 1px; }
+.po { position: absolute; inset: 0; border: 0 solid var(--me); border-radius: 3px; pointer-events: none; z-index: 2; }
+.po.foe { border-color: var(--foe); }
+.po.t { border-top-width: max(2px, .5cqw); } .po.r { border-right-width: max(2px, .5cqw); } .po.b { border-bottom-width: max(2px, .5cqw); } .po.l { border-left-width: max(2px, .5cqw); }
 .wall.wR { right: -3px; top: 6%; bottom: 6%; width: 4px; }
 .wall.wD { bottom: -3px; left: 6%; right: 6%; height: 4px; }
 .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--mute); margin-top: 8px; justify-content: center; }
@@ -323,14 +326,14 @@ C('dusan','Dusan the Faraday Cage','gold','Gold',[2,2,2],'dusan','While on the b
 C('kaoru',"Kaoru, Virtue's Nature",'gold','Gold',[2,2,1],'kaoru','When descended, your descended Acolytes with 1 or less Attack get +1 Attack.');
 C('akuol','Akuol the Culmination','gold','Gold',[4,0,0],'akuol','When descended, copy the stat changes (by effect) of all your currently descended Acolytes.');
 C('gwaaganad','Gwaaganad the Peaceful and Painful Passing','gold','Gold',[4,2,2],'gwaaganad','While on the board, if your Elysium is empty, gain +3/+3 Attack and Defence.');
-C('heaven14','The 14th Heaven','gold','Gold',[1,2,2],'heaven14','While on the board, your Font gets +2 Movement.');
+C('heaven14','The 14th Heaven','gold','Gold',[1,2,2],'heaven14','While on the board, your Font gets +2 Movement (it can then move like an Acolyte).');
 C('lightning','The Disaster, Lightning, Thunder and Storm','gold','Gold',[3,2,2],'lightning','When descended, your other Acolytes in the same row or column get +1 Attack.',['disaster']);
 C('maverick','Maverick, Akimbo Gunslinger','gold','Gold',[2,2,2],'maverick','While on the board, may use each Attack and Movement result twice.');
 C('iliman','Iliman the Burgeoning Plague','gold','Gold',[1,0,0],'iliman','While on the board, all Acolytes of both players lose their effects.');
 C('shroud','The Sanctified Shroud','gold','Gold',[2,2,2],'shroud','When descended, your Font gains: the first time it would be destroyed, it survives and destroys the attacker. One at a time.');
 C('mutya','Mutya Broker of the Beyond','gold','Gold',[2,2,2],'mutya','When descended, replace this ability with any Acolyte\'s ability from either Elysium.');
 C('yan','Yan the Pioneering Pathfinder','gold','Gold',[1,2,2],'yan','When descended, you may move one unoccupied Pathway and place it as if it were a new Pathway of yours.');
-C('ariki','Ariki The Roar of the Earth','gold','Gold',[1,1,1],'ariki','When descended, destroy a single Pathway. All Acolytes on it go to Elysium.');
+C('ariki','Ariki The Roar of the Earth','gold','Gold',[1,1,1],'ariki','When this Acolyte is descended, destroy a single Pathway. All Acolytes on that Pathway are sent to Elysium. This cannot be used to destroy the Pathway connecting to a Font.');
 C('alicia','Alicia the Borderline','gold','Gold',[2,2,2],'alicia','While on the board, all your Acolytes get +0.5 Attack and +0.5 Defence.');
 C('ysbaddaden','Ysbaddaden, the Ancient Chief','gold','Gold',[2,6,5],'dblAtk','When this Acolyte is attacked, double the attacker\'s Attack.',['gigante']);
 C('antoine','Antoine the Tormenting Fantasy','gold','Gold',[2,0,0],'antoine','While on the board, all descended Acolytes get -1/-1 Attack and Defence.');
@@ -358,7 +361,7 @@ C('anjali',"Anjali, Rebirth's Wheel",'gold','Gold',[2,2,2],'anjali','When descen
 // ---- Silver
 C('yui',"Yui, Compassion's Gift",'silver','Silver',[2,1,2],'yui','When descended, your descended Acolytes with 1 or less Defence get +1 Defence.');
 C('caoimhin','Caoimhin The Three as One','silver','Silver',[2,0,0],'caoimhin','While on the board, all Caoimhin gain +1/+1 Attack and Defence. Stacks.');
-C('heaven23','The 23rd Heaven','silver','Silver',[1,1,1],'heaven23','While on the board, your Font gets +2 Attack.');
+C('heaven23','The 23rd Heaven','silver','Silver',[1,1,1],'heaven23','While on the board, your Font gets +2 Attack (it can then attack like an Acolyte).');
 C('kanda','Kanda, Lady Luck','silver','Silver',[2,1,1],'kanda','While on the board, you may re-roll one die per turn.');
 C('fire','The Disaster, Fire, Flood and Lava','silver','Silver',[2,2,2],'fire','When descended, your other Acolytes in the same row or column get +1 Defence.',['disaster']);
 C('tim',"Tim, Sloth's Apathy",'silver','Silver',[0,2,2],'tim','While on the board, all Acolytes of both players have Movement set to 2.');
@@ -401,8 +404,8 @@ C('heaven41','The 41st Heaven','bronze','Bronze',[1,1,1],'heaven41','While on th
 C('kai','Kai, Gambling Degenerate','bronze','Bronze',[3,1,1],'kai','When descended, re-roll the die used to descend it. Movement or Attack: nothing. Descension: +2/+2 Attack and Defence, then roll again.');
 C('sonia','Sonia the Renewed','bronze','Bronze',[2,1,1],'sonia','Once per turn (either player\'s), when it would be destroyed it instead stays in place with +1 Attack (stacks).');
 C('gianmaria','Gianmaria the Thin-Skinned','bronze','Bronze',[4,0,0],'gianmaria','While on the board, cannot be attacked.');
-C('zdenek','Zdenek the Brash Brawler','bronze','Bronze',[3,2,1],null,'No effect.');
-C('alexa','Alexa, Feline Fancy','bronze','Bronze',[2,2,2],null,'No effect.');
+C('zdenek','Zdenek the Brash Brawler','bronze','Bronze',[3,1,1],null,'No effect.');
+C('alexa','Alexa, Feline Fancy','bronze','Bronze',[2,2,1],null,'No effect.');
 C('eggVile','The Egg of the Vile Serpent','bronze','Bronze',[0,0,0],'egg3','At the end of the 3rd of your turns it hatches and gains +3/+3/+3.',['egg']);
 C('brittan',"Brittan, Turtle's Defence",'bronze','Bronze',[1,1,4],null,'No effect.');
 C('niamh',"Niamh Lightning's Stride",'bronze','Bronze',[5,1,0],null,'No effect.');
@@ -600,14 +603,14 @@ function stat(S, a, skipSeo) {
             case 'sebastian': if (s !== a && s.owner === a.owner && adj(s, a)) { at += 2; d += 2; } break;
             case 'alicia': if (s.owner === a.owner) { at += 0.5; d += 0.5; } break;
             case 'antoine': if (!immune(S, a, s)) { at -= 1; d -= 1; } break;
-            case 'salem': if (s.owner !== a.owner && s.dPath && myPath === s.dPath && !immune(S, a, s)) { at -= 1; d -= 1; } break;
-            case 'gianluca': if (s.dPath && myPath === s.dPath && !immune(S, a, s)) { at -= 1; d -= 1; } break;
+            case 'salem': if (s.owner !== a.owner && myPath && myPath === pathIdAt(S, s.x, s.y) && !immune(S, a, s)) { at -= 1; d -= 1; } break;
+            case 'gianluca': if (myPath && myPath === pathIdAt(S, s.x, s.y) && !immune(S, a, s)) { at -= 1; d -= 1; } break;
             case 'egg5': if (s === a && a.hatched) { m += 5; at += 5; d += 5; } break;
             case 'egg3': if (s === a && a.hatched) { m += 3; at += 3; d += 3; } break;
             case 'deepti': if (s === a && boardUnits(S, s.owner).some(function (u) { return u.cid === 'richa'; })) { at += 2; d += 3; } break;
             case 'richa': if (s === a && boardUnits(S, s.owner).some(function (u) { return u.cid === 'deepti'; })) { at += 3; d += 2; } break;
             case 'bigbear': if (s === a && S.pl[s.owner].elysium.some(function (id) { return S.aco[id].cid === 'bigbearbaby'; })) { at += 2; d += 2; } break;
-            case 'ayaan': if (s.owner === a.owner && s.dPath && myPath === s.dPath) { at += 2; d += 2; } break;
+            case 'ayaan': if (s.owner === a.owner && myPath && myPath === pathIdAt(S, s.x, s.y)) { at += 2; d += 2; } break;
             case 'embrace1': if (isEmb && s.owner === a.owner) d += 1; break;
             case 'embrace2': if (isEmb && s.owner === a.owner) at += 1; break;
             case 'embrace3': if (isEmb && s.owner === a.owner) m += 1; break;
@@ -802,6 +805,13 @@ function layPath(S, p, pl) {
   cs.forEach(function (c) { S.cells[c[1]][c[0]] = id; });
   return id;
 }
+// A Pathway that touches a Font is the one connecting to it, and cannot be destroyed by Ariki.
+function fontPath(S, id) {
+  const P = S.paths[id]; if (!P) return false;
+  return P.cells.some(function (c) {
+    return DIRS.some(function (d) { return S.fonts.some(function (f) { return f.x === c[0] + d[0] && f.y === c[1] + d[1]; }); });
+  });
+}
 function removePath(S, id) {
   const P = S.paths[id]; if (!P) return;
   P.cells.forEach(function (c) { S.cells[c[1]][c[0]] = null; });
@@ -923,7 +933,7 @@ function runDescend(S, a, ctx) {
       break;
     }
     case 'ariki': {
-      const opts = Object.keys(S.paths);
+      const opts = Object.keys(S.paths).filter(function (id) { return !fontPath(S, id); });
       if (opts.length) pend(S, { kind: 'pickPath', player: p, src: a.id, cont: 'ariki', opts: opts, prompt: 'Ariki: choose a Pathway to destroy.' });
       break;
     }
@@ -1066,7 +1076,7 @@ function resolvePending(S, choice) {
     case 'siti': { if (P.opts.indexOf(choice.id) < 0) return false; a.siti = choice.id; clear(); log(S, 'Siti is now linked to ' + aname(S, S.aco[choice.id]) + '.'); return true; }
     case 'alexi': { if (P.opts.indexOf(choice.id) < 0) return false; S.aco[choice.id].alexi = true; clear(); log(S, aname(S, S.aco[choice.id]) + ' is infected: its attacks always destroy the defender.'); return true; }
     case 'ariki': {
-      if (P.opts.indexOf(choice.id) < 0) return false;
+      if (P.opts.indexOf(choice.id) < 0 || fontPath(S, choice.id)) return false;
       clear();
       const pid = choice.id, P2 = S.paths[pid];
       P2.cells.forEach(function (c) { const u = unitAt(S, c[0], c[1]); if (u && !immune(S, u, a)) destroy(S, u, a, {}); });
@@ -1226,7 +1236,7 @@ function locked(S, u) {
   const bu = boardUnits(S);
   const anina = bu.some(function (x) { return x.cid === 'anina'; });
   if (!anina) return false;
-  return bu.some(function (d) { return d.owner !== u.owner && d.dPath === here && has(S, d, 'dusan') && !immune(S, u, d); });
+  return bu.some(function (d) { return d.owner !== u.owner && pathIdAt(S, d.x, d.y) === here && has(S, d, 'dusan') && !immune(S, u, d); });
 }
 function bastionAdj(S, x, y, self) {
   return boardUnits(S).some(function (b) { return b !== self && has(S, b, 'bastion') && Math.abs(b.x - x) + Math.abs(b.y - y) === 1; });
@@ -1481,6 +1491,72 @@ function startAttack(S, atk, target, ctx) {
   battle(S, atk, target, ctx);
 }
 
+
+// ============================================================ THE FONT AS A PIECE
+// With Heaven effects a Font gains Movement and Attack, and then moves and attacks like an Acolyte.
+function fontLive(S, p) { const f = S.fonts[p]; return !!f && !f.dead && !fontsGone(S); }
+function fontDests(S, p) {
+  if (!fontLive(S, p)) return [];
+  const budget = fontStat(S, p).m; if (budget <= 0) return [];
+  const f = S.fonts[p], res = [], seen = {}; seen[f.y * W + f.x] = 0;
+  const q = [[f.x, f.y, 0]];
+  while (q.length) {
+    const cur = q.shift(), x = cur[0], y = cur[1], k = cur[2];
+    if (k >= budget) continue;
+    for (const d of DIRS) {
+      const nx = x + d[0], ny = y + d[1];
+      if (!inb(nx, ny) || !built(S, nx, ny) || unitAt(S, nx, ny) || fontAt(S, nx, ny) >= 0) continue;
+      if (wallBlocks(S, x, y, nx, ny)) continue;
+      const key = ny * W + nx;
+      if (seen[key] !== undefined && seen[key] <= k + 1) continue;
+      seen[key] = k + 1; res.push({ x: nx, y: ny, k: k + 1 }); q.push([nx, ny, k + 1]);
+    }
+  }
+  return res;
+}
+function fontTargets(S, p) {
+  const out = [];
+  if (!fontLive(S, p) || fontStat(S, p).a <= 0) return out;
+  const f = S.fonts[p];
+  DIRS.forEach(function (d) {
+    const x = f.x + d[0], y = f.y + d[1];
+    if (!inb(x, y) || wallBlocks(S, f.x, f.y, x, y)) return;
+    const o = unitAt(S, x, y);
+    if (o) { if (o.owner !== p && !has(S, o, 'gianmaria')) out.push({ t: 'unit', id: o.id }); return; }
+    const g = fontAt(S, x, y); if (g >= 0 && g !== p) out.push({ t: 'font', p: g });
+  });
+  return out;
+}
+function fontBattle(S, p, target) {
+  const f = S.fonts[p], fs = fontStat(S, p), me = { owner: p };
+  const fontLoses = function () {
+    if (f.shroud) { f.shroud = false; return false; }
+    f.dead = true; log(S, pname(S, p) + '\'s Font is destroyed!'); return true;
+  };
+  if (target.t === 'font') {
+    const g = S.fonts[target.p], gs = fontStat(S, target.p), res = fs.a - gs.d;
+    log(S, pname(S, p) + '\'s Font attacks ' + pname(S, target.p) + '\'s Font.');
+    if (res > 0) { if (g.shroud) { g.shroud = false; log(S, 'The Sanctified Shroud saves the Font.'); f.dead = true; log(S, pname(S, p) + '\'s Font is destroyed!'); } else { g.dead = true; log(S, pname(S, target.p) + '\'s Font is destroyed!'); } }
+    else if (res < 0) fontLoses();
+    else { log(S, 'Stalemate.'); }
+    checkEnd(S); return;
+  }
+  const def = S.aco[target.id];
+  if (has(S, def, 'sword')) { log(S, pname(S, p) + '\'s Font strikes the Sword in the Lake.'); destroy(S, def, null, {}); checkEnd(S); return; }
+  let atkv = fs.a;
+  if (has(S, def, 'dblAtk') && !immune(S, me, def)) atkv *= 2;
+  const defv = stat(S, def).d - (has(S, def, 'lisa') ? 2 : 0), res = atkv - defv;
+  log(S, pname(S, p) + '\'s Font (' + atkv + ' Atk) attacks ' + aname(S, def) + ' (' + defv + ' Def).');
+  if (res > 0) {
+    if (has(S, def, 'yiorgos') && fs.a > 1) log(S, 'Yiorgos cannot be destroyed in battle by an attacker with more than 1 Attack.');
+    else destroy(S, def, null, {});
+  } else if (res < 0) {
+    if (f.shroud) { f.shroud = false; log(S, 'The Sanctified Shroud saves the Font and destroys ' + aname(S, def) + '!'); destroy(S, def, null, {}); }
+    else { f.dead = true; log(S, pname(S, p) + '\'s Font is destroyed!'); }
+  } else log(S, 'Stalemate.');
+  checkEnd(S);
+}
+
 // ============================================================ FREE ACTIONS (no die needed)
 function cultSquare(S, p) {
   const bu = boardUnits(S, p);
@@ -1546,7 +1622,7 @@ function doEndStep(S, s, p) {
   switch (s.k) {
     case 'rose': {
       const u = S.aco[s.id]; if (!u || u.st !== 'board' || !has(S, u, 'rose')) return;
-      const here = u.dPath;
+      const here = pathIdAt(S, u.x, u.y); if (!here) return;
       boardUnits(S).forEach(function (v) {
         if (v !== u && v.st === 'board' && pathIdAt(S, v.x, v.y) === here && !immune(S, v, u)) { log(S, 'Rose\'s requiem claims ' + aname(S, v) + '.'); destroy(S, v, u, {}); }
       });
@@ -1673,6 +1749,17 @@ function apply(S, act) {
       placeAcolyte(S, p, act.aco, act.place, { die: dieId });
       break;
     }
+    case 'god': {
+      if (S.phase !== 'act') return bad('Not now');
+      const ts = (act.toks || []).map(function (id) { return tokById(S, id); });
+      if (ts.length !== 3 || ts[0] === ts[1] || ts[1] === ts[2] || ts[0] === ts[2] || ts.some(function (t) { return !t || t.spent || t.type !== ts[0].type; })) return bad('God\'s Descension needs three unused results of the same kind');
+      const a = S.aco[act.aco]; if (!a || a.owner !== p || a.st !== 'pool' || !reqOk(S, p, a)) return bad('That Acolyte cannot descend');
+      if (!canPlace(S, p, act.place.vi, act.place.ax, act.place.ay, placementFree(S, act.aco))) return bad('Illegal Pathway placement');
+      ts.forEach(function (t) { t.spent = true; S.dice[t.die].st = 'used'; });
+      log(S, pname(S, p) + ' invokes God\'s Descension: three ' + ({ D: 'Descend', M: 'Move', A: 'Attack' })[ts[0].type] + ' results and their dice are given up.');
+      placeAcolyte(S, p, act.aco, act.place, { die: ts[0].die });
+      break;
+    }
     case 'move': {
       if (S.phase !== 'act') return bad('Not now');
       const t = tokById(S, act.tok), u = S.aco[act.u];
@@ -1715,6 +1802,25 @@ function apply(S, act) {
       useTok(S, t, u);
       if (t2) { t2.spent = true; log(S, aname(S, u) + ' combines Attack results (+' + bonus + ').'); }
       startAttack(S, u, act.target, { bonus: bonus });
+      break;
+    }
+    case 'fmove': {
+      if (S.phase !== 'act') return bad('Not now');
+      const t = tokById(S, act.tok);
+      if (!t || t.spent || t.type !== 'M' || t.only) return bad('Bad move');
+      if (!fontDests(S, p).some(function (d) { return d.x === act.x && d.y === act.y; })) return bad('The Font cannot move there');
+      S.fonts[p].x = act.x; S.fonts[p].y = act.y; t.spent = true;
+      log(S, pname(S, p) + '\'s Font moves.');
+      checkEnd(S);
+      break;
+    }
+    case 'fattack': {
+      if (S.phase !== 'act') return bad('Not now');
+      const t = tokById(S, act.tok);
+      if (!t || t.spent || t.type !== 'A' || t.only) return bad('Bad attack');
+      const tg = fontTargets(S, p).find(function (x) { return x.t === act.target.t && (x.t === 'font' ? x.p === act.target.p : x.id === act.target.id); });
+      if (!tg) return bad('Illegal target');
+      t.spent = true; fontBattle(S, p, tg);
       break;
     }
     case 'tina': {
@@ -1952,6 +2058,15 @@ function aiCandidates(S) {
       });
     }
   });
+  ['D', 'M', 'A'].forEach(function (ty) {
+    const tr = toks.filter(function (t) { return t.type === ty; });
+    if (tr.length < 3) return;
+    const ids = [tr[0].id, tr[1].id, tr[2].id], seenG = {};
+    S.pl[p].acos.filter(function (id) { return S.aco[id].st === 'pool' && reqOk(S, p, S.aco[id]); }).forEach(function (aid) {
+      const cid = S.aco[aid].cid; if (seenG[cid]) return; seenG[cid] = 1;
+      plsFor(placementFree(S, aid), 4).forEach(function (pl) { out.push({ t: 'god', toks: ids, aco: aid, place: pl, sacPenalty: 2.5 }); });
+    });
+  });
   const units = boardUnits(S, p);
   const mTok = toks.filter(function (t) { return t.type === 'M'; }), aTok = toks.filter(function (t) { return t.type === 'A'; });
   const movers = units.slice();
@@ -1963,6 +2078,10 @@ function aiCandidates(S) {
       fenrirRuns(S, u).forEach(function (r) { out.push({ t: 'fenrir', tok: mt.id, u: u.id, dir: r.dir }); });
     }
   });
+  const fmt = mTok.find(function (t) { return !t.only; });
+  if (fmt) fontDests(S, p).forEach(function (dd) { out.push({ t: 'fmove', tok: fmt.id, x: dd.x, y: dd.y }); });
+  const fat = aTok.find(function (t) { return !t.only; });
+  if (fat) fontTargets(S, p).forEach(function (tg) { out.push({ t: 'fattack', tok: fat.id, target: tg.t === 'font' ? { t: 'font', p: tg.p } : { t: 'unit', id: tg.id } }); });
   units.forEach(function (u) {
     const at = aTok.find(function (t) { return t.only === u.id; }) || aTok.find(function (t) { return !t.only; });
     if (!at) return;
@@ -2019,7 +2138,7 @@ root.Deign = {
   stat: stat, fontStat: fontStat, ab: ab, has: has, boardUnits: boardUnits, unitAt: unitAt, fontAt: fontAt,
   poolDice: poolDice, rollLimit: rollLimit, unspent: unspent, tokById: tokById, descendOptions: descendOptions,
   placements: placements, canPlace: canPlace, cellsOf: cellsOf, moveDests: moveDests, fenrirRuns: fenrirRuns,
-  attackTargets: attackTargets, azraelCells: azraelCells, locked: locked, suppressed: suppressed, maxRerolls: maxRerolls,
+  attackTargets: attackTargets, fontDests: fontDests, fontTargets: fontTargets, fontLive: fontLive, fontPath: fontPath, azraelCells: azraelCells, locked: locked, suppressed: suppressed, maxRerolls: maxRerolls,
   aiNext: aiNext, aiDiceChoice: aiDiceChoice, evalState: evalState, light: light, pathIdAt: pathIdAt, built: built,
   aname: aname, attackRange: attackRange, sacDie: sacDie,
   placementFree: placementFree, commandable: commandable, fogged: fogged, freeActions: freeActions, comboPartner: comboPartner,
@@ -2131,6 +2250,7 @@ function renderHome() {
     '<li><b>Roll.</b> Roll up to 3 dice from your pool (2 on the first player\'s first turn). Each face is Move, Attack or Descend, in the colour of its tier.</li>' +
     '<li><b>Descend.</b> Spend a Descend result to bring an Acolyte of that colour onto the board. Pick one of five six-square Pathway shapes (rotate it if you like); it must touch your Font or one of your Pathways. The die is then used for good.</li>' +
     '<li><b>Move and attack.</b> Acolytes move along built Pathways, up to their Movement, never diagonally. An Attack result hits an adjacent enemy: Attack minus Defence above 0 destroys the defender, below 0 destroys the attacker, 0 is a stalemate.</li>' +
+    '<li><b>God\'s Descension.</b> If you roll three of the same result, you may give up all three to descend an Acolyte of any colour. Their three dice are removed from your dice pool.</li>' +
     '<li><b>Ritual Sacrifice.</b> Give up two matching Move or two matching Attack results to descend a Bronze Acolyte at random cost of a Bronze die.</li>' +
     '<li><b>Win</b> by destroying the enemy Font (Defence 0), by leaving the enemy with no Acolytes on the board once both sides have descended, or with a special Acolyte condition.</li>' +
     '</ul><p class="note" style="margin-top:10px">The face layout of each die was not part of the rules text, so this version uses a balanced placeholder layout. The board is 13 by 12. Both can be changed in one place in the code.</p></details></div>';
@@ -2215,7 +2335,7 @@ function renderLobby() {
 // ------------------------------------------------------------ GAME: highlights
 function pickTok(type, unitId) {
   const ts = D.unspent(S).filter(function (t) { return t.type === type; });
-  return ts.find(function (t) { return t.only === unitId; }) || ts.find(function (t) { return !t.only; });
+  return (unitId ? ts.find(function (t) { return t.only === unitId; }) : null) || ts.find(function (t) { return !t.only; });
 }
 function validAnchors(f) { const m = {}; f.valid.forEach(function (p) { if (D.VARIANTS[p.vi].shape === f.shape) m[p.ay * W + p.ax] = 1; }); return m; }
 function computeHL() {
@@ -2240,6 +2360,14 @@ function computeHL() {
   if (UI.azr) {
     const u = S.aco[UI.azr.u], v = S.aco[UI.azr.id];
     D.azraelCells(S, u, v).forEach(function (c) { h.pk[c[1] * W + c[0]] = 'azr'; });
+    return h;
+  }
+  if (!P && S.phase === 'act' && UI.selFont && D.fontLive(S, me)) {
+    if (pickTok('M', null)) D.fontDests(S, me).forEach(function (d) { h.mv[d.y * W + d.x] = { font: true }; });
+    if (pickTok('A', null)) D.fontTargets(S, me).forEach(function (t) {
+      if (t.t === 'font') { const f = S.fonts[t.p]; h.at[f.y * W + f.x] = t; }
+      else { const v = S.aco[t.id]; h.at[v.y * W + v.x] = t; }
+    });
     return h;
   }
   if (!P && S.phase === 'act' && UI.sel) {
@@ -2274,15 +2402,23 @@ function renderBoard() {
     if (HL.mv[key] || HL.at[key] || HL.pk[key] || HL.anc[key] || (UI.flow && UI.flow.stage === 'place')) cls += ' can';
     const u = D.unitAt(S, x, y), f = D.fontAt(S, x, y);
     let inner = '';
+    if (pid) {
+      // Outline each 6-square Pathway: draw an edge wherever the neighbouring square belongs to a different Pathway.
+      const sg = me === 1 ? -1 : 1, nb = function (ox, oy) { const nx = x + ox * sg, ny = y + oy * sg; return (nx >= 0 && ny >= 0 && nx < W && ny < H) ? S.cells[ny][nx] : null; };
+      let eg = '';
+      if (nb(0, -1) !== pid) eg += ' t'; if (nb(1, 0) !== pid) eg += ' r'; if (nb(0, 1) !== pid) eg += ' b'; if (nb(-1, 0) !== pid) eg += ' l';
+      inner += '<span class="po ' + (S.paths[pid].owner === me ? 'me' : 'foe') + eg + '"></span>';
+    }
     if (u) {
       cls += ' can';
       const e = D.stat(S, u), b = cardOf(u).stats;
       const sv = function (v, base) { return v > base ? '<span class="up">' + fmt(v) + '</span>' : (v < base ? '<span class="dn">' + fmt(v) + '</span>' : fmt(v)); };
-      if (u.owner !== me && D.fogged(S, u)) inner = '<span class="unit foe fog' + (UI.sel === u.id ? ' sel' : '') + '"><b>Fog</b><i>?/?/?</i></span>';
-      else inner = '<span class="unit ' + (u.owner === me ? 'me' : 'foe') + (UI.sel === u.id ? ' sel' : '') + '"><b>' + esc(abbr(u.cid)) + '</b><i>' + sv(e.m, b[0]) + '/' + sv(e.a, b[1]) + '/' + sv(e.d, b[2]) + '</i></span>';
+      if (u.owner !== me && D.fogged(S, u)) inner += '<span class="unit foe fog' + (UI.sel === u.id ? ' sel' : '') + '"><b>Fog</b><i>?/?/?</i></span>';
+      else inner += '<span class="unit ' + (u.owner === me ? 'me' : 'foe') + (UI.sel === u.id ? ' sel' : '') + '"><b>' + esc(abbr(u.cid)) + '</b><i>' + sv(e.m, b[0]) + '/' + sv(e.a, b[1]) + '/' + sv(e.d, b[2]) + '</i></span>';
     } else if (f >= 0) {
       const fs = D.fontStat(S, f);
-      inner = '<span class="unit font ' + (f === me ? 'me' : 'foe') + '"><b>F</b><i>' + fmt(fs.m) + '/' + fmt(fs.a) + '/' + fmt(fs.d) + '</i></span>';
+      if (f === me && S.phase === 'act' && (fs.m > 0 || fs.a > 0)) cls += ' can';
+      inner += '<span class="unit font ' + (f === me ? 'me' : 'foe') + (UI.selFont && f === me ? ' sel' : '') + '"><b>F</b><i>' + fmt(fs.m) + '/' + fmt(fs.a) + '/' + fmt(fs.d) + '</i></span>';
     }
     // Labyrinth Maker walls: draw the wall on the right or lower edge of this square, as seen from this player's seat.
     const rx = me === 1 ? x - 1 : x + 1, ry = y, dx2 = x, dy2 = me === 1 ? y - 1 : y + 1;
@@ -2290,7 +2426,7 @@ function renderBoard() {
     if (D.wallBlocks(S, x, y, dx2, dy2)) inner += '<span class="wall wD"></span>';
     h += '<button class="' + cls + '" data-act="cell" data-x="' + x + '" data-y="' + y + '" aria-label="Square ' + (x + 1) + ',' + (y + 1) + '">' + inner + '</button>';
   }
-  return '<div class="boardwrap"><div class="board" style="grid-template-columns:repeat(' + W + ',minmax(0,1fr));grid-template-rows:repeat(' + H + ',minmax(0,1fr));aspect-ratio:' + W + ' / ' + H + '">' + h + '</div><div class="legend"><span style="--c:var(--me)">You</span><span style="--c:var(--foe)">Opponent</span><span style="--c:var(--ok)">Can move here</span><span style="--c:var(--bad)">Can attack</span></div></div>';
+  return '<div class="boardwrap"><div class="board" style="grid-template-columns:repeat(' + W + ',minmax(0,1fr));grid-template-rows:repeat(' + H + ',minmax(0,1fr));aspect-ratio:' + W + ' / ' + H + '">' + h + '</div><div class="legend"><span style="--c:var(--me)">You</span><span style="--c:var(--foe)">Opponent</span><span style="--c:var(--ok)">Can move here</span><span style="--c:var(--bad)">Can attack</span><span style="--c:var(--fg)">Outline = one 6-square Pathway</span></div></div>';
 }
 
 // ------------------------------------------------------------ GAME: controls
@@ -2361,6 +2497,10 @@ function controlsHtml() {
     const bronzeLeft = S.pl[me].acos.some(function (id) { return S.aco[id].st === 'pool' && cardOf(S.aco[id]).tier === 'bronze'; });
     if (pair.length >= 2 && bronzeLeft && D.sacDie(S, me).length) sac += '<button class="btn sm" data-act="sac" data-type="' + ty + '">Ritual Sacrifice: 2× ' + FACE_NAME[ty] + ' → Bronze</button>';
   });
+  ['D', 'M', 'A'].forEach(function (ty) {
+    const tr = unspent.filter(function (t) { return t.type === ty; });
+    if (tr.length >= 3 && S.pl[me].acos.some(function (id) { return S.aco[id].st === 'pool'; })) sac += '<button class="btn sm" data-act="god" data-type="' + ty + '">God\'s Descension: 3× ' + FACE_NAME[ty] + ' → any Acolyte</button>';
+  });
   let rer = '';
   if (S.rerolls < D.maxRerolls(S) && unspent.length) rer = '<div class="row"><span class="tip">Kanda lets you re-roll one die:</span>' + unspent.map(function (t) { return '<button class="btn sm" data-act="reroll" data-id="' + t.id + '">Re-roll ' + FACE_NAME[t.type] + '</button>'; }).join('') + '</div>';
   const none = !S.tokens.length ? '<p class="tip">You have no dice left to roll. End your turn.</p>' : '';
@@ -2373,7 +2513,7 @@ function controlsHtml() {
   }
   return '<div class="panel"><div class="eyebrow">Your results</div>' + (toks ? '<div class="toks">' + toks + '</div>' : '') + none +
     (unspent.some(function (t) { return t.type === 'D'; }) ? '<p class="tip">Tap a Descend result to bring an Acolyte onto the board.</p>' : '') +
-    (unspent.some(function (t) { return t.type !== 'D'; }) ? '<p class="tip">Select an Acolyte on the board. Green dots are where it can move, red outlines are what it can attack.</p>' : '') +
+    (unspent.some(function (t) { return t.type !== 'D'; }) ? '<p class="tip">Select an Acolyte on the board (or your Font, if it has Movement or Attack from a Heaven). Green dots are where it can move, red outlines are what it can attack.</p>' : '') +
     (sac ? '<div class="row">' + sac + '</div>' : '') + rer + combo + fa +
     '<div class="row"><button class="btn primary" data-act="endTurn">End turn</button></div></div>';
 }
@@ -2402,7 +2542,7 @@ function flowHtml() {
       const a = S.aco[id], c = cardOf(a), n = f.opts.filter(function (q) { return S.aco[q].cid === a.cid; }).length;
       return '<button class="pickrow" data-act="pickAco" data-id="' + id + '"><span><span class="t-' + c.tier + '">' + esc(c.name) + (n > 1 ? ' ×' + n : '') + '</span><small>' + esc(c.text || 'No effect.') + '</small></span><span class="mono">' + c.stats.join('/') + '</span></button>';
     }).join('');
-    return '<div class="panel"><div class="eyebrow">' + (f.kind === 'sac' ? 'Ritual Sacrifice: choose a Bronze Acolyte' : 'Descend which Acolyte?') + '</div><div class="list">' + (rows || '<p class="tip">No Acolyte of that colour left in your pool.</p>') + '</div><div class="row"><button class="btn quiet" data-act="cancelFlow">Cancel</button></div></div>';
+    return '<div class="panel"><div class="eyebrow">' + (f.kind === 'sac' ? 'Ritual Sacrifice: choose a Bronze Acolyte' : f.kind === 'god' ? 'God\'s Descension: choose any Acolyte' : 'Descend which Acolyte?') + '</div><div class="list">' + (rows || '<p class="tip">No Acolyte of that colour left in your pool.</p>') + '</div><div class="row"><button class="btn quiet" data-act="cancelFlow">Cancel</button></div></div>';
   }
   const placed = f.anchor && D.canPlace(S, me, f.vi, f.anchor[0], f.anchor[1], f.free);
   const name = f.aco ? esc(cardOf(S.aco[f.aco]).name) : 'Pathway';
@@ -2513,6 +2653,7 @@ function confirmFlow() {
   let a;
   if (f.kind === 'descend') a = { t: 'descend', tok: f.tok, aco: f.aco, place: place };
   else if (f.kind === 'sac') a = { t: 'sac', toks: f.toks, aco: f.aco, place: place };
+  else if (f.kind === 'god') a = { t: 'god', toks: f.toks, aco: f.aco, place: place };
   else a = { t: 'resolve', choice: place };
   UI.flow = null;
   act(a);
@@ -2528,7 +2669,7 @@ function act(a) {
 }
 function afterApply(local) {
   if (UI.sel) { const u = S.aco[UI.sel]; if (!u || u.st !== 'board') UI.sel = null; }
-  UI.azr = null; UI.combo = false;
+  UI.azr = null; UI.combo = false; UI.selFont = false;
   if (S.phase !== 'act' || S.pending) { if (S.pending && S.pending.player !== me) UI.flow = null; }
   render();
   if (mode === 'online' && local) queueWrite();
@@ -2556,6 +2697,13 @@ function onCell(x, y) {
     }
     UI.azr = null; render(); return;
   }
+  if (S.phase === 'act' && UI.selFont && D.fontLive(S, me)) {
+    if (HL.mv[key]) return void act({ t: 'fmove', tok: pickTok('M', null).id, x: x, y: y });
+    if (HL.at[key]) { const tg = HL.at[key]; return void act({ t: 'fattack', tok: pickTok('A', null).id, target: tg.t === 'font' ? { t: 'font', p: tg.p } : { t: 'unit', id: tg.id } }); }
+    if (!u && D.fontAt(S, x, y) === me) { UI.selFont = false; render(); return; }
+  }
+  if (!u && S.phase === 'act' && D.fontAt(S, x, y) === me && (D.fontStat(S, me).m > 0 || D.fontStat(S, me).a > 0)) { UI.selFont = true; UI.sel = null; UI.combo = false; render(); return; }
+  UI.selFont = false;
   if (S.phase === 'act' && UI.sel) {
     const sel = S.aco[UI.sel];
     if (HL.mv[key]) {
@@ -2606,7 +2754,7 @@ function startAI() {
 }
 function begin(game, seat, m) {
   S = game; me = seat; mode = m; view = 'game';
-  UI.sel = null; UI.flow = null; UI.azr = null; UI.combo = false; UI.rollFor = -1; UI.insp = null; UI.confirmResign = false;
+  UI.sel = null; UI.selFont = false; UI.flow = null; UI.azr = null; UI.combo = false; UI.rollFor = -1; UI.insp = null; UI.confirmResign = false;
   render(); if (m === 'ai') schedAI();
   window.scrollTo(0, 0);
 }
@@ -2757,6 +2905,12 @@ document.addEventListener('click', function (ev) {
       UI.flow = { kind: 'sac', toks: [pair[0].id, pair[1].id], stage: 'pick', opts: opts };
       UI.sel = null; render(); break;
     }
+    case 'god': {
+      const ty = el.dataset.type, tr = D.unspent(S).filter(function (t) { return t.type === ty; }).slice(0, 3);
+      const opts = S.pl[me].acos.filter(function (q) { return S.aco[q].st === 'pool' && D.descendOptions(S, me, { any: true }).indexOf(q) >= 0; });
+      UI.flow = { kind: 'god', toks: tr.map(function (t) { return t.id; }), stage: 'pick', opts: opts };
+      UI.sel = null; render(); break;
+    }
     case 'pickAco': {
       const f = UI.flow; f.aco = id;
       if (!startFlow(f.kind, { tok: f.tok, toks: f.toks, aco: id })) { UI.flow = null; }
@@ -2796,7 +2950,7 @@ document.addEventListener('keydown', function (ev) {
 });
 
 // ------------------------------------------------------------ boot
-window.__deign = { get S() { return S; }, D: D, UI: UI, act: act, onCell: onCell };
+window.__deign = { get S() { return S; }, D: D, UI: UI, act: act, onCell: onCell, begin: begin, render: render };
 render();
 // ------------------------------------------------------------ Firebase
 // Paste your Firebase web app config here (Firebase console > Project settings > Your apps > Web app).
