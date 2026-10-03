@@ -1755,9 +1755,13 @@ function apply(S, act) {
       if (ts.length !== 3 || ts[0] === ts[1] || ts[1] === ts[2] || ts[0] === ts[2] || ts.some(function (t) { return !t || t.spent || t.type !== ts[0].type; })) return bad('God\'s Descension needs three unused results of the same kind');
       const a = S.aco[act.aco]; if (!a || a.owner !== p || a.st !== 'pool' || !reqOk(S, p, a)) return bad('That Acolyte cannot descend');
       if (!canPlace(S, p, act.place.vi, act.place.ax, act.place.ay, placementFree(S, act.aco))) return bad('Illegal Pathway placement');
-      ts.forEach(function (t) { t.spent = true; S.dice[t.die].st = 'used'; });
-      log(S, pname(S, p) + ' invokes God\'s Descension: three ' + ({ D: 'Descend', M: 'Move', A: 'Attack' })[ts[0].type] + ' results and their dice are given up.');
-      placeAcolyte(S, p, act.aco, act.place, { die: ts[0].die });
+      // The three results are given up, but only the die of the summoned Acolyte's own colour leaves the pool.
+      let dieId = S.pl[p].dice[S.pl[p].acos.indexOf(act.aco)];
+      if (!dieId || S.dice[dieId].st !== 'pool') dieId = poolDice(S, p).find(function (id) { return S.dice[id].tier === cd(a).tier && !S.dice[id].rainbow; });
+      ts.forEach(function (t) { t.spent = true; });
+      if (dieId) S.dice[dieId].st = 'used';
+      log(S, pname(S, p) + ' invokes God\'s Descension: three ' + ({ D: 'Descend', M: 'Move', A: 'Attack' })[ts[0].type] + ' results are given up.');
+      placeAcolyte(S, p, act.aco, act.place, { die: dieId || ts[0].die });
       break;
     }
     case 'move': {
@@ -2250,7 +2254,7 @@ function renderHome() {
     '<li><b>Roll.</b> Roll up to 3 dice from your pool (2 on the first player\'s first turn). Each face is Move, Attack or Descend, in the colour of its tier.</li>' +
     '<li><b>Descend.</b> Spend a Descend result to bring an Acolyte of that colour onto the board. Pick one of five six-square Pathway shapes (rotate it if you like); it must touch your Font or one of your Pathways. The die is then used for good.</li>' +
     '<li><b>Move and attack.</b> Acolytes move along built Pathways, up to their Movement, never diagonally. An Attack result hits an adjacent enemy: Attack minus Defence above 0 destroys the defender, below 0 destroys the attacker, 0 is a stalemate.</li>' +
-    '<li><b>God\'s Descension.</b> If you roll three of the same result, you may give up all three to descend an Acolyte of any colour. Their three dice are removed from your dice pool.</li>' +
+    '<li><b>God\'s Descension.</b> If you roll three of the same result, you may give up all three to descend an Acolyte of any colour. Only the die matching that Acolyte\'s colour is removed from your dice pool.</li>' +
     '<li><b>Ritual Sacrifice.</b> Give up two matching Move or two matching Attack results to descend a Bronze Acolyte at random cost of a Bronze die.</li>' +
     '<li><b>Win</b> by destroying the enemy Font (Defence 0), by leaving the enemy with no Acolytes on the board once both sides have descended, or with a special Acolyte condition.</li>' +
     '</ul><p class="note" style="margin-top:10px">The face layout of each die was not part of the rules text, so this version uses a balanced placeholder layout. The board is 13 by 12. Both can be changed in one place in the code.</p></details></div>';
