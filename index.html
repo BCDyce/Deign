@@ -267,10 +267,10 @@ const TIER_ORDER = ['apex', 'gold', 'silver', 'bronze'];
 const TIER_LABEL = { apex: 'Snow / Obsidian', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' };
 // D = Descension, M = Movement, A = Attack. The rules do not list the faces of each die, so these are placeholders.
 const DICE_FACES = {
-  apex:    ['D', 'M', 'M', 'A', 'A', 'A'],
-  gold:    ['D', 'M', 'M', 'A', 'A', 'A'],
-  silver:  ['D', 'M', 'M', 'M', 'A', 'A'],
-  bronze:  ['D', 'D', 'M', 'M', 'A', 'A'],
+  apex:    ['D', 'M', 'M', 'A', 'A', 'A'],   // Obsidian / Snow: 1 Descension, 2 Movement, 3 Attack
+  gold:    ['D', 'M', 'M', 'M', 'A', 'A'],   // 1 Descension, 3 Movement, 2 Attack
+  silver:  ['D', 'D', 'M', 'M', 'A', 'A'],   // 2 Descension, 2 Movement, 2 Attack
+  bronze:  ['D', 'D', 'M', 'M', 'A', 'A'],   // 2 Descension, 2 Movement, 2 Attack
   rainbow: ['D', 'D', 'M', 'M', 'A', 'A']
 };
 // Pathway (Descension) shapes, read from the attached diagram. Cells are [col,row]; the anchor is the yellow square the Acolyte lands on.
@@ -2257,7 +2257,7 @@ function renderHome() {
     '<li><b>God\'s Descension.</b> If you roll three of the same result, you may give up all three to descend an Acolyte of any colour. Only the die matching that Acolyte\'s colour is removed from your dice pool.</li>' +
     '<li><b>Ritual Sacrifice.</b> Give up two matching Move or two matching Attack results to descend a Bronze Acolyte at random cost of a Bronze die.</li>' +
     '<li><b>Win</b> by destroying the enemy Font (Defence 0), by leaving the enemy with no Acolytes on the board once both sides have descended, or with a special Acolyte condition.</li>' +
-    '</ul><p class="note" style="margin-top:10px">The face layout of each die was not part of the rules text, so this version uses a balanced placeholder layout. The board is 13 by 12. Both can be changed in one place in the code.</p></details></div>';
+    '</ul><p class="note" style="margin-top:10px">Dice faces: Obsidian and Snow dice have 1 Descension, 3 Attack and 2 Movement. Gold dice have 1 Descension, 2 Attack and 3 Movement. Silver and Bronze dice have 2 Descension, 2 Attack and 2 Movement. The board is 13 by 12.</p></details></div>';
 }
 
 function poolGridHtml() {
